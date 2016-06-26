@@ -1,0 +1,50 @@
+// Acq sequences Ch5->Ch1
+
+port = "COM5"; // Arduino com port
+term = "\n";
+
+// Pre-acquisition sequence
+preSeq = "B B000001";
+preSeqTime = 1000;
+
+// Main sequence
+// Sequence in B[Ch6]-[Ch1]
+String [] seq = new String [] {"A B100010", "A B101000"}; // Alternate Ch4 + Ch2
+seqCounts = "N 2,2,"; // Repeats each line twice.  Elements here has to match elements in seq
+
+// Post-acquisition sequence
+postSeq = "D B010000";
+postSeqTime = 500;
+
+//-------------------------------------------------------------------------------------//
+
+
+mmc.setSerialPortCommand(port, "C", term); // Clear out old data
+
+// Upload main sequence
+for (int i=0; i<seq.length; i++) {
+ 	mmc.setSerialPortCommand(port, seq[i].toString(), term);
+ 	Thread.sleep(100);
+	//print(answer);
+}
+
+mmc.setSerialPortCommand(port, seqCounts, term); // Set repeat counts
+Thread.sleep(50);
+
+mmc.setSerialPortCommand(port, preSeq, term); // Set pre-seq 
+Thread.sleep(50);
+mmc.setSerialPortCommand(port, "G "+preAcquisitionilluminationTime.toString(), term); // Set pre-illum time
+Thread.sleep(50);
+
+mmc.setSerialPortCommand(port, postSeq, term); // Set post-seq
+Thread.sleep(100);
+mmc.setSerialPortCommand(port, "H "+postSeqTime.toString(), term);
+Thread.sleep(100);
+
+mmc.setSerialPortCommand(port, "R", term);
+Thread.sleep(100);
+
+mmc.setSerialPortCommand(port, "K", term); // Call pre-acq sequence
+Thread.sleep(preSeqTime);
+mmc.setSerialPortComman(port, "T", term); // Run acquisition sequence (1 repeat per seq line)
+mmc.setSerialPortCommand(port, "L", term); // Call post-acq sequence

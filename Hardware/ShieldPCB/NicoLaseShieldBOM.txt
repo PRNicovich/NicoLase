@@ -1,0 +1,30 @@
+Partlist for NicoLase Arduino Shield
+
+Assembly variant: 
+
+Part          Value             Package       
+
+C1            BN35N61           B35N61        
+C2            BN35N61           B35N61        
+C3            BN35N61           B35N61        
+C4            BN35N61           B35N61        
+C5            BN35N61           B35N61        
+C6            BN35N61           B35N61        
+IC1           74HC4050D         SO16          
+J1            NicoLaseShieldPCB CustomPCB
+MASTERFIRE    BN35N61           B35N61       
+MASTERTRIGGER BN35N61           B35N61        
+R1            10k               1206          
+R2            10k               1206          
+R3            220               1206         
+S1            NormOpenPshBtn    TACTILE-PTH   
+SLAVEFIRE     BN35N61           B35N61        
+SLAVETRIGGER  BN35N61           B35N61       
+U1            7432SE            SOT353       
+
+Add sufficient male 0.1" headers to populate board (28 total). 
+
+BNC sockets (BN35N61) are these are equivalent:
+http://au.element14.com/webapp/wcs/stores/servlet/ProductDisplay?catalogId=15001&langId=43&urlRequestType=Base&partNumber=1020980&storeId=10184
+
+Files in NicoLaseArduinoShield.zip can be forwarded to your favorite PCB house for manufacture.

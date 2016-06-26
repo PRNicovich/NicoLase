@@ -1,0 +1,41 @@
+Bill of Materials for NicoLase 2400
+Two-mirror laser combiner and fiber launcher for up to 4 laser diodes
+
+Parts listed for 4 laser installation (405 nm, 488 nm, 561 nm, and 640 nm)
+
+Machined components:
+- NicoLase2400 Heatsink Block + Shim(s) (../HeatSinkBlock/NicoLase 2400 Heat Sink Block.pdf and ../HeatSinkBlock/NicoLase 2400 Heat Sink Spacer.pdf)
+- HCP mount pedistal (../HeatSinkBlock/NicoLase HCP Pedistal.pdf)
+
+Printed components:
+- 4 x "Half-inch Ex Filter Holder.stl" or "Half-inch Ex Filter Holder VORTRAN.stl" 
+- 4 x "Half-inch Ex Filter Face.stl" 
+
+All located at https://github.com/PRNicovich/3D-Printed-Optics-Lab-Parts/tree/master/Half-inch%20filter%20Holder
+
+Thorlabs components:
+- 1 x MB3045/M
+- 8 x POLARIS-K1 (or POLARIS-K1-H or POLARIS-K1-2AH)
+- 1 x PAFA-X-F-A
+- 1 x HCP
+- 1 x P3-405BPM-FC-2
+- 5 x PF10-03-P01
+- 8 x RS05P/M
+- 8 x CF125
+
+Note: Some of CF125 are replaced with clamps from other makers in pictured build.
+
+Chroma components:
+- ZT442rdc	405/488 combiner
+- ZT532rdc	488/561 combiner
+- ZT594rdc	561/637 combiner
+
+All 25 mm round, unmounted
+
+Semrock components:
+- LD01-405/10-12.5	405 laser clean-up
+- FF01-488/10-12.5	488 laser clean-up
+- LL02-561-12.5		561 laser clean-up
+- LD01-640/8-12.5	637 laser clean-up
+
+All 12.5 mm round, mounted
