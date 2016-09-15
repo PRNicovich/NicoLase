@@ -1,0 +1,31 @@
+Bill of Materials for NicoLase Dual Fiber Port Adapter
+Beam splitter for controllable power output to two fiber couplers
+
+Printed mount holds polarizing beamsplitter and cage rods for rotation mount. Rotation mount holds half wave plate. 
+Rotating half wave plate divides power between two exit routes of the beamsplitter cube.
+
+Components include parts for coupling to second single-mode fiber.  If free-space or other coupling is desired, substitute these parts with desired equivalents.
+
+Printed components:
+- "BeamsplitterAndWavePlateMount.stl" 
+
+Located in https://github.com/PRNicovich/NicoLase/Hardware/DualOutput
+
+Machined components: 
+- 4 x 6 mm rod, 20 mm long (or Thorlabs ER1-P4)
+- 1 x HCP Pedestal mount (https://github.com/PRNicovich/NicoLase/Hardware/HeatSinkMount/NicoLase HCP Pedestal.pdf)
+
+Thorlabs components:
+- 1 x PBS121
+- 1 x CRM1/M 
+- 1 x AHWP05M-600 (Thorlabs equivalent to as-pictured Newport 10RP52-1)
+- 1 x HCP (For exit port fiber launch) 
+- 1 x PAFA-X-F-A (For exit port fiber launch) 
+- 1 x P3-405BPM-FC-2 (exit fiber patch cable)
+
+Optional components:
+- 1 x Thorlabs CRM1/M 
+- 1 x Newport 5511 or equivalent linear polarizer in 1" SM1 mount.
+- Exchange cage rods for 40 mm (Thorlabs ER1.5-P4) length
+
+Optional components add additional polarizing filter to optics path to increase extinction ratio between light paths if laser sources are not well polarized.  Note that this does drop the total transmission of the system (especially with 405 nm lasers). 

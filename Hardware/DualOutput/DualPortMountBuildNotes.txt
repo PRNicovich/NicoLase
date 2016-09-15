@@ -1,0 +1,15 @@
+3D printed mount for 12.5 mm beamsplitter cube and 30 mm cage mount
+
+Part is printed with beamsplitter end down and cage mount face up.  Incident optical axis is then perpendicular to the build plate.  This avoids issues with the cage rod holes.
+
+6 mm cage rods (or stainless steel rod cut to length) can be press-fit into holes in part.  This may require a bit of clean-up in the holes prior to assembly if excess material is deposited.  Easy to do a test fit first if concerned.  Do not install cage plate until beamsplitter cube is installed.
+
+Beamsplitter mounting face should be cleaned up with blade and excess material removed, then beamsplitter held in place with a piece of double-stick tape.  3M 410M is excellent choice.
+
+Cage plate can now be pressed onto 6 mm rods on part.  The fit may be tight, especially when cage plate is near part face as rods may not be precisely oriented.  It'll fit, though (assuming printer tolerances are OK).  Once inserted the half wave plate can be secured in rotational mount.  Optional linear polarizer can be added to end of cage rods if desired.
+
+Assembly can be held to breadboard with standard 1" pedestal clamp.  
+
+Print material should be stiffest available.  Zortrax Z-UltraT gives reasonable results.  An overly compliant material will bend and mis-align when trying to adjust orientation of rotational mount.  Using a heavy infill helps with stiffness as well.
+
+Printed using a Zortrax M200 with heavy infill and 0.09 mm layer height.
