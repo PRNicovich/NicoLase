@@ -19,9 +19,14 @@ Thorlabs components:
 - 1 x PBS121
 - 1 x CRM1/M 
 - 1 x AHWP05M-600 (Thorlabs equivalent to as-pictured Newport 10RP52-1)
-- 1 x HCP (For exit port fiber launch) 
-- 1 x PAFA-X-F-A (For exit port fiber launch) 
-- 1 x P3-405BPM-FC-2 (exit fiber patch cable)
+
+For beam steering to second fiber launch:
+- 1 x HCP\
+- 1 x PAFA-X-F-A 
+- 1 x P3-405BPM-FC-2 
+- 2 x RS1P4M 
+- 2 x POLARIS-K05 
+- 2 x PF05-04-P01
 
 Optional components:
 - 1 x Thorlabs CRM1/M 
