@@ -8,6 +8,8 @@
  *  F - Set first value in sequence to B00111111, or all 6 on
  *  G long X - set exposure time for pre-acquisition sequence B
  *  H long X - set exposure time for post-acquisition sequence D
+ *  I Bool X - True/false for pre-acquisition sequence to be followed by camera trigger out
+ *  J long X - set delay between pre-acquisition sequence and camera trigger out
  *  K - Call pre-acquisition sequence B for time set in G
  *  L - Call post-acquisition sequence D for time set in H  
  *  N long,long,long..., - Set counter numbers for each A sequence. 
@@ -16,6 +18,7 @@
  *  R - Reset sequence counter to 0 and cycleNum to 0 (reset)
  *  S XX - Set sequence counter to XX
  *  T - Test main sequence programmed
+ *  
  *  
  *  Button with pull-down resistor into pin 3
  *  LEDs with pins A0-A5 (Red-Blue, C6-C1) as sources
@@ -42,7 +45,14 @@ int postIllumSeq = {0x00};
 unsigned long postIllumTime = 0;
 volatile int digitCount = 1;
 
+// Incoming trigger variables
+const int triggerPin = 2;
 boolean LEDToggle = false;
+
+// Post-acquisition trigger variables
+const int outPin = 4;
+boolean followSeq = false;
+long preAcqToCamDelay = 0; 
 
 // Button Variables 
 const int buttonPin = 3;
@@ -67,7 +77,10 @@ void setup() {
   seqRepeat[0] = 1;
   arraySize = 1;
 
+  attachInterrupt(digitalPinToInterrupt(triggerPin), ToggleLED,  CHANGE);
   pinMode(buttonPin, INPUT);
+  pinMode(outPin, OUTPUT);
+  digitalWrite(outPin, LOW);
   DDRC = B11111111;
 
 }
@@ -124,7 +137,7 @@ void loop() {
             inputOK = false;
           } 
 
-          if (inputOK) {
+        if (inputOK) {
             seqArray[arraySize] = readVal;
             Serial.print("Appended B");
             Serial.println(seqArray[arraySize], BIN);
@@ -239,7 +252,7 @@ void loop() {
         // G long (ms of exposure time, max 2^32 - 1, or just shy of 50 days)
         // Timing of this handled by Arduino, not by host PC
   
-        Serial.print("Set pre-acquisition counter to :");
+        Serial.print("Set pre-acquisition time to :");
         
         serialInputToLong();
         
@@ -279,6 +292,54 @@ void loop() {
         
         break;
 
+      case ('I') :
+        // Set whether or not a pre-acquisition sequence is followed by an output trigger on the
+        // outPin.
+        // Input is '1' or '0' character
+
+        if (inputString.length() == 4) {
+        
+          Serial.println(inputString);
+
+            if (inputString[2] == 48) {
+              followSeq = false;
+            }
+            else if (inputString[2] == 49) {
+              followSeq = true;
+            }
+            else {
+              Serial.println("Incorrect character for trigger flag.");
+            }
+            Serial.print("Pre-acquisition cam trigger flag set to: ");
+            Serial.println(followSeq, BIN);
+          }
+        
+        
+        break;
+
+      case ('J') :
+        // Set delay time (in ms) between post-acquisition sequence completion and, if set, 
+        // the outgoing pulse to outPin.
+        // Input is long integer
+
+        Serial.print("Set pre-acqisition to cam trigger delay to :");
+
+        serialInputToLong();
+        
+
+        if (!inputOK) {
+          Serial.println("");
+          Serial.println("Invalid value.  Setting pre-acquisition time to 0");
+          preAcqToCamDelay = 0;
+        }
+        else {
+          preAcqToCamDelay = readVal;
+          Serial.println(preAcqToCamDelay);
+        }
+
+        break;
+        
+
       case ('K') : 
         // Execute pre-acquisition illumination pattern for G ms
         // Quick-and-dirty using delay() to do the timing.
@@ -290,6 +351,13 @@ void loop() {
         PORTC = preIllumSeq;
         delay(preIllumTime);
         PORTC = 0x00;
+
+        if (followSeq) {
+          delay(preAcqToCamDelay);
+          digitalWrite(outPin, HIGH);
+          delay(10);
+          digitalWrite(outPin, LOW);
+        }
 
 
         break;
@@ -510,7 +578,7 @@ void serialInputToLong() {
         readVal = 0;
         inputOK = false;
         digitCount = 0;
-        for (int i = 2; i < sizeof(inputString); i++) {
+        for (int i = 2; i < inputString.length(); i++) {
 
           if ((inputString[i] >= 48) & (inputString[i] < 58)) {
             readVal = readVal*10;
@@ -520,13 +588,7 @@ void serialInputToLong() {
           } // if is valid ascii numeral
         } // for loop over valid characters
 
-        Serial.print("readVal = ");
-        Serial.println(readVal);
-        Serial.print("Digits = ");
-        Serial.println(digitCount);
-        Serial.print("String size = ");
-        Serial.println(sizeof(inputString));
-        if (digitCount == (sizeof(inputString)-2)) {
+        if (digitCount == (inputString.length()-(1+2))) {
           inputOK = true;
         }
 }
@@ -546,6 +608,11 @@ void serialEvent() {
     // so the main loop can do something about it:
     if (inChar == '\n') {
       stringComplete = true;
+      Serial.println("Input:");
+    /*  Serial.println(inputString);
+      Serial.println("Size:");
+      Serial.println(inputString.length()-1);
+      */
     }
   }
 }
