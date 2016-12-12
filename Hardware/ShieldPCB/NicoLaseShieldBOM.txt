@@ -16,7 +16,9 @@ MASTERFIRE    BN35N61           B35N61
 MASTERTRIGGER BN35N61           B35N61        
 R1            10k               1206          
 R2            10k               1206          
-R3            220               1206         
+R3            220               1206
+R4	      10k               1206     
+R5            10k               1206              
 S1            NormOpenPshBtn    TACTILE-PTH   
 SLAVEFIRE     BN35N61           B35N61        
 SLAVETRIGGER  BN35N61           B35N61       
@@ -28,3 +30,6 @@ BNC sockets (BN35N61) are these are equivalent:
 http://au.element14.com/webapp/wcs/stores/servlet/ProductDisplay?catalogId=15001&langId=43&urlRequestType=Base&partNumber=1020980&storeId=10184
 
 Files in NicoLaseArduinoShield.zip can be forwarded to your favorite PCB house for manufacture.
+
+12/12/2016 - The inputs to the OR gate require pull-down resistors for proper operation, especially if either is left unpopulated in the final assembly.  These have been added to the PCB design as R4 and R5.  10k ohm is appropriate for both. 
+
