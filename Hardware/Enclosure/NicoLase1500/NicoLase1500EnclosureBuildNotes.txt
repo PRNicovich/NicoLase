@@ -1,0 +1,10 @@
+NicoLase 1500 Enclosure Readme
+
+Parts list is included in NicoLase1500BOM.xlsx (Excel) or NicoLase1500BOM.tsv (tab-separated table).  
+For parts not readily clear through ordering codes, drawings are referenced.  These are included in the .\Drawings\ folder.
+
+80/20 part numbers and order codes are included throughout.  Of course, other profile makers could be substituted with little issue. All parts are common and should be available from multiple manufacturers.
+
+The panel material only needs to be opaque and of the appropriate thickness.  Black textured ABS haircell is quoted, but often we replace this material with what the local supplier has on hand.
+
+A full CAD drawing of the enclosure is included as a .STEP file.  This is the native SolidWorks file format, but can be imported into other programs.  For example, we routinely use AutoDesk Fusion 360, which is free for those with academic email accounts.
