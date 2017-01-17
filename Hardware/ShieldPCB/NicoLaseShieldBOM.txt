@@ -31,5 +31,9 @@ http://au.element14.com/webapp/wcs/stores/servlet/ProductDisplay?catalogId=15001
 
 Files in NicoLaseArduinoShield.zip can be forwarded to your favorite PCB house for manufacture.
 
-12/12/2016 - The inputs to the OR gate require pull-down resistors for proper operation, especially if either is left unpopulated in the final assembly.  These have been added to the PCB design as R4 and R5.  10k ohm is appropriate for both. 
+Surface mount parts are chosen for a compact assembly.  While small, these have been successfully assembled using a standard temperature-controlled soldering iron and reel solder.  For those starting out with working with surface-mount parts, an excellent guide is available from SparkFun at https://www.sparkfun.com/tutorials/36. 
+
+Edit added 12/12/2016 - The inputs to the OR gate require pull-down resistors for proper operation, especially if either is left unpopulated in the final assembly.  These have been added to the PCB design as R4 and R5.  10k ohm is appropriate for both. 
+
+
 
