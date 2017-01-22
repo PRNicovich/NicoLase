@@ -59,6 +59,8 @@ A Thorlabs PAFA-X-F-A Achromatic FiberPort FC/APC coupler is used to couple the 
 
 A bill of materials for optical components is given in the Hardware folder of the repo.  
 
+A procedure for the assembly and alignment of the optics has also been included in the Hardware\Optics\ folder of the repo.
+
 ###### One mirror or two?
 Using two mirrors to steer a beam from one vector to another is taken as dogma for most applications. It is true that this is necessary for arbitrary output and input vectors, but that's not the case here.  
 
