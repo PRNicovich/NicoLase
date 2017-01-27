@@ -29,6 +29,8 @@ Add sufficient male 0.1" headers to populate board (28 total).
 BNC sockets (BN35N61) are these are equivalent:
 http://au.element14.com/webapp/wcs/stores/servlet/ProductDisplay?catalogId=15001&langId=43&urlRequestType=Base&partNumber=1020980&storeId=10184
 
+The OR gate (U1) used in implementation is 74HC1G32GW from NXP.  Important characteristics are CMOS logic levels (3v3), can run on 3v3 input power, and SOT-353 footprint.  
+
 Files in NicoLaseArduinoShield.zip can be forwarded to your favorite PCB house for manufacture.
 
 Surface mount parts are chosen for a compact assembly.  While small, these have been successfully assembled using a standard temperature-controlled soldering iron and reel solder.  For those starting out with working with surface-mount parts, an excellent guide is available from SparkFun at https://www.sparkfun.com/tutorials/36. 
