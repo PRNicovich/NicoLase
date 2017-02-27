@@ -90,26 +90,50 @@ The shield PCB can be ordered [here](http://dirtypcbs.com/view.php?share=18992&a
 Software is split into two parts - controller software running on the Arduino and interface software for the PC.  Only the controller software is strictly necessary for triggering.  Examples of PC software are given which can be expanded to work with your particular system.
 
 ###### Controller Software
-The Arduino sketch accomplishes two primary needs - external communication and sequence programming via serial port, and triggering + interating a programmed laser sequence in response to a trigger pulse. 
+The Arduino sketch accomplishes two primary needs - external communication and sequence programming via serial port, and triggering + interating a programmed laser sequence in response to a trigger pulse.  
 
 Serial commands are via the USB connection to the control PC.  This USB also provides power to the Arduino, so no additional external supply is required.  Once powered on, the Arduino listens over the serial port for an incoming sequence to alter the standard sequence (all lasers on when the fire signal is high) or to reach any of the alternate features.  
 
 A detailed description of the possible serial commands is given in the documentation in the Arduino Sketch folder of the repo.  Breifly each command is a capital letter character, sometimes a space followed by one or more digits, and a newline character.  
+
+A Basic Controller and an Advanced System Controller are included in the repo.  The Basic Controller relies on an external trigger signal (ie a camera Fire pulse) to synchronize and iterate over the sequence of outputs.  The Advanced System Controller provides the main features of the Basic Controller in external clock mode, but additionally can be configured to have the Arduino act as the master clock for the system. 
+
+The Basic Controller is simpler to operate and is sufficient for most applications.  The Advanced System Controller is a great option if you wish to have a master clock that isn't reliant on the camera signal.  Additionally, the Advanced System Controller solves the timelapse issue in Micromanager for acquisitions between ~3 Hz and the free-run rate of your camera.  More detail on this issue is given below.
+
+Both configurations use the same hardware and share many of the same serial commands. Switching between the two options is a matter of uploading the appropriate sketch to the Arduino and intefacing with the respective PC-side software or serial commands.
+
+####### Basic Controller
 
 Triggering (via either the PCB MASTERFIRE or SLAVEFIRE connection) triggers an interrupt on the Arduino. A rising edge causes the laser outputs (CH1 through CH6) to go high.  A falling edge on the trigger pulse drives the laser outputs low and iterates the programmed sequence to the next one.  If the end of the sequence list is reached the Arduino goes back to the start.  Any given line of the sequence can be repeated any number of times (up to 2147483647 times per line).  
 
 Alternate functions are available for what is called a pre- or post-acquisition command.  These are single laser patterns that can be triggered by a serial command independent of a trigger input.  Each has a time associated for how long the outputs will be held high.  The pre-acquisition sequence has an additional delay after which an optional pulse will be send to the MASTER TRIGGER pin.  This means you can, for example, have an acquisition sequence of a 488 nm laser and 561 nm laser firing on alternating camera frames (the 'acquisition sequence').  Before that sequence is reached, however, a pre-acquisition sequence of a 405 nm laser is fired with no camera acquisition for 1000 ms, followed by a 500 ms delay, and then the actual acquisition begun by the Arduino sending a pulse to the master camera.  A more detailed description of the 
 triggering and associated controller functions is given in the Triggering section.  
 
+####### Advanced System Controller
+
+The basic controls for laser sequencing during a camera-synchronized acquisition described above are supported.  In addition there is an available mode in which the Arduino can act as the master system clock.  The camera and lasers are then both driven by the Arduino system clock.
+
+The primary motivation for the Arduino as the master clock is solving the no-mans-land of timelapse rates between the camera's free-run rate (delay < [exposure time + dead time]) and ~3 Hz.  In Micromanager, the timelapse delays in this range seem to change from a continuous camera acquisition to a series of single acquisitions at a given rate.  This comes with much more communication overhead, ultimately limiting the capture rate to accomodate the ~250 ms of added delay. Such a delay is not immediately obvious in the software without checking the timestamps of acquired images and may not necessarily affect your system or measurements. We like to work in the affected range for our system, however, so a solution is needed.  
+
+In this configuration all cameras are set to External Trigger mode.  The primary camera is then triggered by the Arduino.  If a secondary camera is present, it is triggered by the Fire signal from the primary camera.  By having all cameras set to External Trigger mode, the communication overhead comes once at the beginning of the acquisition.  Between frame captures the camera does not have to communicate with the PC except to transfer image data.  The cameras wait for the next incoming external trigger pulse to take the next image and are able to capture without additional communication overhead.  This means timelapse images can be captured at any rate from the free-run rate of the camera on up to a limit imposed by the Arduino timing roll-over (days to weeks).  
+
+It is essential that these external pulses come when the camera is listening, so the external delay must be greater than the set exposure time plus the camera dead time (50-65 ms on an Andor 888; check the Minumum Cycle Time on the Micromanager Device Property Browser for this value).  The current version of this software does not check for a 'Ready' signal from the camera before sending the next pulse, so this timing is the responsibility of the user. 
+
+** Note ** 
+With the Arduino as the master clock, you don't need another clock signal!  If you simply want to trigger TTL devices at a given rate, then this software may work for you!  See .\Software\AdvancedSystemController\Arduino_controller documentation for details on how to control sequencing and serial communication with the associated Arduino sketch.
+	
+
 ###### PC Software
 Communication with the Arduino is through standard serial commands.  Serial settings are essentially defaults - 9600 baud, 8-n-1, and a newline character line feed.  
 
-Example Micro-manager scripts to communicate laser sequence settings are given for inclusion into the Beanshell interface.  The Arduino is added to the Micro-manager config as a FreeSerialPort device (be sure to get the right COM port + settings!) for this communication.  sendSerialPortCommand() calls pass along strings to the Arduino at the beginning of the experiment (or during, if you want) which then waits for trigger pulses from the camera.  
+The Arduino is added to the Micro-manager config as a FreeSerialPort device (be sure to get the right COM port + settings!) for this communication.  sendSerialPortCommand() calls pass along strings to the Arduino at the beginning of the experiment (or during, if you want) which then waits for trigger pulses from the camera.  
 
-A GUI plug-in for programming laser sequences more easily in Micro-manager is forthcoming.  In the meantime, a MATLAB GUI for easily uploading arbitrary sequences is also included.  This can run in parallel with Micro-manager if the FreeSerialPort has NOT been added to the Micro-manager config, or in your own external application. 
+For the Basic Controller an example Micro-manager script to communicate laser sequence settings are given for inclusion into the Beanshell interface.  A MATLAB GUI for easily uploading arbitrary sequences is also included.  This can run in parallel with Micro-manager if the FreeSerialPort has NOT been added to the Micro-manager config, or in your own external application. 
+
+A Micro-manager plug-in for the Advanced System Controller includes a GUI for programming laser and camera sequencing as well as loop and step timing.  The configuration is passed to the Arduino via serial commands and the acquisition sequence begun.  The plug-in then reassembles the data sequence into the proper multidimensional stack, including separating channels by camera and laser configuration dimension.  
 
 ### Triggering
-A diagram of the triggering sequence is given below:
+A diagram of the triggering sequence in the default external clock mode is given below:
 
 ![Trigger diagram](https://github.com/PRNicovich/NicoLase/blob/master/Triggering/TriggeringDiagram.jpg)
 
@@ -127,9 +151,11 @@ The progression of trigger signals for this experiment of 8 imaging frames is as
 - Falling edge of MASTERFIRE pulse drives CHX outputs low and Arduino iterates to next line of sequence
 - After acquisition is complete, serial command to Arduino starts Post-acquisition sequence (here Ch6, blue transmitted LED high) for user-defined time
 
+With the Arduino as the master clock, the primary camera follows trigger pulses from the Arduino.  The secondary camera, if present, follows the primary camera.  For each frame the MASTERTRIGGER pin on the Arduino is used to trigger the primary camera, which is in External Trigger mode (rather than External Start or Software triggering).  The Advanced Laser Controller software does not explicitly support a Pre- or Post-acquisition exposure at this time.
+
 Outgoing pulses are all 5v TTL.  Incoming signals are anticipated to be 3v3 TTL signals (5v tolerant).  
 
-Typical configuration assumes that CHX outputs are connected to lasers from Ch1 -> Ch6 running blue-red.  This is arbitrary except for using associated PC software.
+Typical configuration assumes that CHX outputs are connected to lasers from Ch1 -> Ch6 running blue-red.  This is arbitrary except for keeping things straight in associated PC software.
 
 ### Going foward
 As these systems continue to be used and mature more modifications and software will be added to the repo.  Until then, feel free to ask questions or give a build of your own a try.

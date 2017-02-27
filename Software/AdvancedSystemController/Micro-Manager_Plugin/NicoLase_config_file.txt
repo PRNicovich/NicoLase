@@ -1,0 +1,6 @@
+Arduino Com Port : 5
+Number of Arduino Channels (up to 6) : 5
+Channel Names : 404 nm,491 nm,517 nm,561 nm,639 nm
+Trigger Property name : Trigger
+Software Trigger Option : Software
+External Trigger Option : External

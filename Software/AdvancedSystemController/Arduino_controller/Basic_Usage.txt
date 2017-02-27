@@ -1,0 +1,53 @@
+Installation:
+
+Open, Compile and upload the sketch to the arduino using the arduino ide (https://www.arduino.cc/en/main/software)
+
+
+All Commands:
+"S" - start aquisition
+"Z" - Stop aquisition
+"R" - reset arduino to original settings
+"M0" - Set arduino to basic slave mode
+"M1" - Set arduino to master Mode
+"N[Loops] [Steps 1] [Repeats 1] [Loop time 1] [Steps 2] [Repeats 2] [Loop time 2]..." - set number of loops and details
+"A[Loop No.] [Laser Seq] [Pause time]" - Add step details to loop
+
+
+Basic Usage:
+
+Controlling Laser sequences is done with four steps:
+
+
+(1) The mode is switched from the basic mode to master mode using the command "M1".
+
+
+(2) The details of loops are input using the command "N[Loops] [Steps 1] [Repeats 1] [Loop time 1]
+
+[Steps 2] [Repeats 2] [Loop time 2]...", where [Loops] is the total number of loops, [Steps 1] is the
+
+number of steps in the first loop, [Repeats 1] is the number of times the first loop is repeated, [Loop
+
+time 1] is the total loop time for the first loop time. This order is continued for the details of all loops. To
+
+simplify the setup of Nicolase, the total time taken for each loop is input which then calculates the
+
+pause time of the final step in the loop for the user.
+
+
+(3) The details of each step are added sequentially using the command "A[Loop No.] [Laser Seq] [Pause
+
+time]" where [Loop No.] is the loop which the step belongs to, [Laser Seq] is the is a string of 1's and 0's
+
+corresponding to whether a laser should be on (1) or off (0) during the acquisition for that step (for
+
+example, 101010 would activate every second laser).[Pause time] is the time to pause before running
+
+the next step. Pause times are measured between the start of each step. As such, all pause times must
+
+be greater than the sum of the exposure time and dead time of the camera (~65 ms for the Andor iXon
+
+Ultra 888 used in development).
+
+
+(4) Start the acquisition using the command "S".
+

@@ -1,0 +1,43 @@
+Requirements:
+At least micromanager 2.0
+
+Basic Installation:
+Place the NicoLase_config_file.txt file in Micromanager install directory (on windows the default is C:\Program Files\Micro-Manager-2.0beta)
+
+Place the NicoLase.jar file in the micromanager plug-in dircetory (on windows the default is C:\Program Files\Micro-Manager-2.0beta\mmplugins)
+
+Launch micromanager. The plugin should be accessible from the Plugins menu.
+
+Basic Configuration:
+
+Add the arduino to micromanager as a free serial port device.
+
+	Settings I've used:
+	Property,COM5,AnswerTimeout,500.0000
+	Property,COM5,BaudRate,9600
+	Property,COM5,DelayBetweenCharsMs,0.0000
+	Property,COM5,Handshaking,Off
+	Property,COM5,Parity,None
+	Property,COM5,StopBits,1
+	Property,COM5,Verbose,1
+
+	Others may work but are untested.
+
+In the NicoLase_config_file.txt that was copied to the Micromanager install directory change parameters as needed. Make sure you keep the space after the colon!
+
+	The first line is the com port that is used by the arduino. This can be found in config->device property browser, then it will be the value of 
+	property "FreeSerialPort - ShowPort"
+
+	The second line is the number of channels that will be shown in the table. This can be any number in theory but at the moment the arduino shield design only 
+	supports up to 6
+
+	The third line is the labels to identify what lasers (or other triggered items) have been plugged into each channel.
+
+	What each brand of camera names its triggering property and states varies slightly. The fourth line is the Trigger property name. To find the property name 
+	go to config->device property browser then unselect all check boxes except cameras. Find the property related to camera triggering. 
+	Add the name AFTER THE HYPHON to the text file. For an andor camera, the property is "Andor -Trigger" so Trigger is added to the config file.
+
+	In the drop down menu for the value of triggering copy the exact names of software and external triggering for the camera to the config file.
+
+	Save the file. Restart micromanager.
+
