@@ -2,6 +2,14 @@
 
 ## An open-source diode laser combiner, fiber launch, and sequencing controller for fluorescence microscopy
 
+New users please check out the associated open-access publication from PLoS ONE:
+http://dx.doi.org/10.1371/journal.pone.0173879
+
+Therein you'll find a complete description of the NicoLase platform and performance specifications.  
+
+Here in the repository you can find all of the files and supplementary descriptions to build your own fiber-coupled diode laser launch as described in the publication. As the project matures, new features and softwares will be incorporated here.  
+
+
 ### Motivation
 Diode laser units are convenient for fluorescence microscopy and super-resolution microscopy due to their high power and ease of use.  A couple dozen lines are avaliable from most makers to cover UV through mid-IR applications.  With the addition of direct modulation avaliable on nearly all modern units there's no need for an AOTF or other tuning or power modulation control in addition to the diodes themselves. 
 
