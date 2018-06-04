@@ -18,6 +18,8 @@
  *  R - Reset sequence counter to 0 and cycleNum to 0 (reset)
  *  S XX - Set sequence counter to XX
  *  T - Test main sequence programmed
+ *  W BXXXXXX - Turn on array BXXXXXX directly.  No sequencing or triggering.
+ *  X - All off and reset to trigger-enabled setting.
  *  
  *  
  *  Button with pull-down resistor into pin 3
@@ -497,7 +499,43 @@ void loop() {
         }
         PORTC = 0x00;
         break;
+
+      case ('W') :
+
+        Serial.println("Directly on");
+        Serial.println(inputString.length());
+        Serial.println(inputString);
+        readVal = 0;
+        inputOK = false;
+        if (inputString.length() == 10) {
         
+          sequenceStringToIntegers();
+
+        }
+        else {
+            Serial.println("Bad input. Incorrect number of characters.");
+            inputOK = false;
+          } 
+
+        if (inputOK) {
+            PORTC = readVal;
+            detachInterrupt(digitalPinToInterrupt(triggerPin));
+          }
+
+        break;
+
+      case ('X') :
+
+        // Turn off any on pins in previous array
+        // reattach interrupt to input pin
+        Serial.print("Reset and reattach interrupt");
+        cycleNum = 0;
+        repeatNow = 0;
+        PORTC = 0x00;
+        attachInterrupt(digitalPinToInterrupt(triggerPin), ToggleLED,  CHANGE);
+        
+        break;   
+       
     }
     
     inputString = "";
