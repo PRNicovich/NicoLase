@@ -519,7 +519,7 @@ void loop() {
       case ('Q') : 
 
         Serial.println("Turn on first sequence");
-
+        detachInterrupt(digitalPinToInterrupt(triggerPin));
         PORTC = seqArray[0];
 
         break;
