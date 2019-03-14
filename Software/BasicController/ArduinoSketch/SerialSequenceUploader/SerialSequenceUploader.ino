@@ -12,12 +12,16 @@
  *  J long X - set delay between pre-acquisition sequence and camera trigger out
  *  K - Call pre-acquisition sequence B for time set in G
  *  L - Call post-acquisition sequence D for time set in H  
+ *  M BXXXXXX - Set pattern as only in sequence. Equivalent to 'C\nA BXXXXXX'
  *  N long,long,long..., - Set counter numbers for each A sequence. 
- *                        Each will be called M times before moving to next, then back to start
+ *                        Each will be called N[i] times before moving to next, then back to start
+ *  O - Turn off all outputs, ignoring input shutter state. Call 'X' to reset shutter state.
  *  P - Add pre-programmed sequence of Blue-Red individually
+ *  Q - Turn on first pattern in programmed sequence, ignoring input shutter state.  Do not iterate counter.
  *  R - Reset sequence counter to 0 and cycleNum to 0 (reset)
  *  S XX - Set sequence counter to XX
  *  T - Test main sequence programmed
+ *  U - Echo only first array sequence as byte. Terse output version of 'E'.
  *  W BXXXXXX - Turn on array BXXXXXX directly.  No sequencing or triggering.
  *  X - All off and reset to trigger-enabled setting.
  *  
@@ -377,6 +381,50 @@ void loop() {
 
         break;
 
+       case ('M') :
+
+        Serial.println("Clear and set sequence");
+        Serial.println(inputString.length());
+        Serial.println(inputString);
+
+        // Clear old sequence and info
+        // Equivalent to 'C' command
+        for (int i = 0; i < arraySize; i++) {
+          seqArray[i] = 0x00; // set all values to 0
+        }
+        
+        arraySize = 0;
+        repeatNow = 0;
+
+        preIllumSeq = {0x00};
+        preIllumTime = 0;
+        postIllumSeq = {0x00};
+        postIllumTime = 0;
+
+        // Append input to sequence.
+        // Equivalent to 'A BXXXXXX'
+        
+        readVal = 0;
+        inputOK = false;
+        if (inputString.length() == 10) {
+        
+          sequenceStringToIntegers();
+
+        }
+        else {
+            Serial.println("Bad input. Incorrect number of characters.");
+            inputOK = false;
+          } 
+
+        if (inputOK) {
+            seqArray[arraySize] = readVal;
+            Serial.print("Appended B");
+            Serial.println(seqArray[arraySize], BIN);
+            arraySize++;
+          }
+
+        break; 
+
       case ('N') :
 
         Serial.println("Set repeat numbers");
@@ -436,6 +484,14 @@ void loop() {
         
         break; 
 
+      case ('O') :
+
+        Serial.println("Turn off all outputs");
+
+        PORTC = 0x00;
+
+        break;
+
       case ('P') :
 
         // Set sequence to fire each LED Blue -> Red 
@@ -458,6 +514,14 @@ void loop() {
         
         arraySize = 6;
         
+        break;
+
+      case ('Q') : 
+
+        Serial.println("Turn on first sequence");
+
+        PORTC = seqArray[0];
+
         break;
 
       case ('R') :
@@ -500,6 +564,22 @@ void loop() {
         PORTC = 0x00;
         break;
 
+      case ('U') :
+
+          for (int i = 0; i < arraySize; i++) {
+  
+          if (seqArray[i] < 15){
+          Serial.print("0x0");
+          Serial.println(seqArray[i], HEX);
+          }
+          else {
+          Serial.print("0x");
+          Serial.println(seqArray[i], HEX);
+          }
+        }
+
+        break;
+
       case ('W') :
 
         Serial.println("Directly on");
@@ -535,6 +615,12 @@ void loop() {
         attachInterrupt(digitalPinToInterrupt(triggerPin), ToggleLED,  CHANGE);
         
         break;   
+
+
+
+
+
+
        
     }
     
@@ -646,7 +732,7 @@ void serialEvent() {
     // so the main loop can do something about it:
     if (inChar == '\n') {
       stringComplete = true;
-      Serial.println("Input:");
+      //Serial.println("Input:");
     /*  Serial.println(inputString);
       Serial.println("Size:");
       Serial.println(inputString.length()-1);
