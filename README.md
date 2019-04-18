@@ -119,6 +119,8 @@ Triggering (via either the PCB MASTERFIRE or SLAVEFIRE connection) triggers an i
 Alternate functions are available for what is called a pre- or post-acquisition command.  These are single laser patterns that can be triggered by a serial command independent of a trigger input.  Each has a time associated for how long the outputs will be held high.  The pre-acquisition sequence has an additional delay after which an optional pulse will be send to the MASTER TRIGGER pin.  This means you can, for example, have an acquisition sequence of a 488 nm laser and 561 nm laser firing on alternating camera frames (the 'acquisition sequence').  Before that sequence is reached, however, a pre-acquisition sequence of a 405 nm laser is fired with no camera acquisition for 1000 ms, followed by a 500 ms delay, and then the actual acquisition begun by the Arduino sending a pulse to the master camera.  A more detailed description of the 
 triggering and associated controller functions is given in the Triggering section.  
 
+Additional commands enable configuration of the controller as a UserDefinedStateDevice and UserDefinedShutter device in Micro-Manager.  In this mode basic fluorescence microscopy functions (select a laser set and toggle on/off) directly through Micro-manager GUI.  For those wishing to use the NicoLase in a straightforward or multi-user environment this may be useful. 
+
 ####### Advanced System Controller
 
 The basic controls for laser sequencing during a camera-synchronized acquisition described above are supported.  In addition there is an available mode in which the Arduino can act as the master system clock.  The camera and lasers are then both driven by the Arduino system clock.

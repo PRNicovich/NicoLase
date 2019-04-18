@@ -1,8 +1,10 @@
 Software associated with NicoLase Arduino laser sequencer.  
 
-The Basic Controller allows for sequencing of the TTL outputs with an external system clock (ie a camera fire signal).   The Advanced System Controller allows the Arduino to be the master system clock to control both laser and camera triggering, in addition to an optional external clock mode.  
+The Basic Controller allows for sequencing of the TTL outputs with an external system clock (ie a camera fire signal) or as a laser select and shutter.   The Advanced System Controller allows the Arduino to be the master system clock to control both laser and camera triggering, in addition to an optional external clock mode.  
 
-The Basic Controller is simpler to operate and is sufficient for most applications.  The Advanced System Controller is a great option if you wish to have a master clock that isn't reliant on the camera signal.  Additionally, the Advanced System Controller solves the timelapse issue in Micromanager for acquisitions between ~3 Hz and the free-run rate of your camera.  
+The Basic Controller is simpler to operate and is sufficient for most applications.  Example configurations are included for Micro-Manager with controller as a FreeSerialPort or as a UserDefinedStateDevice + UserDefinedShutter.  The former allows lower-level control of the sequencing operations through the script interface.  The UserDefined configuration allows 'channel' selection and on/off control through the GUI interface.  Once configured, the UserDefinedStateDevice behaves very similar to a filter wheel but with laser channel output(s) as the state parameter.  The UserDefinedShutter can toggle on and off a single laser configuration as if it were a shutter device. Together these act as straightforward Micro-manager devices for a user-friendly setup. 
+
+The Advanced System Controller is a great option if you wish to have a master clock that isn't reliant on the camera signal.  Additionally, the Advanced System Controller solves the timelapse issue in Micromanager for acquisitions between ~3 Hz and the free-run rate of your camera.  
 
 Both use the same hardware and share many of the same serial commands. Switching between the two options is a matter of uploading the appropriate sketch to the Arduino. 
 
@@ -20,9 +22,23 @@ MATLAB GUI (SequenceUploader.m) can be run in MATLAB R2014b or later.  The COM p
 
 - Micro-ManagerDemo: 
 
+-- FreeSerialPort:
+
 Example Beanshell script for interfacing with Arduino running above sketch through Micro-manager.  This requires the Arduino to be set up on the correct COM port as a FreeSerialPort device in the Micro-Manager config.  
 
 On boot the Arduino sketch defaults to an 'all on' sequence, so if you only wish to toggle lasers on and off in sync with the camera exposures, it is not necessary to re-program the default sequence.  Only if you wish to take advantage of more complex features is any communication over USB necessary prior to an acquisition.
+
+.\BasicController\Micro-MangerDemo\FreeSerial\ includes a .bsh script file demonstrating this functionality.
+
+-- StateDevices:
+
+Configuration of controller as a UserDefinedStateDevice and/or UserDefinedShutter.  These are both useful for GUI-centric interaction with the controller for typical fluorescence microscopy use. 
+
+The UserDefinedStateDevice allows a single channel (not sequence) to be selected using USB serial communication with MicroManager.  The Hardware Configuration in MicroManager must include a specification for the number of device states at configuration.  There are 2^6 possible configs with this hardware, but likely the single-channel configurations will be of most use.  In that configuration, the 'Number of positions' parameter should be 7 (6 each with a single laser on plus one all-off state) and the command string set to 'M BXXXXXX' where 'XXXXXX' is the binary output configuration for that channel.  These can be then designated in the Micro-manager Configuration Settings groups as a part of a preset along with any other desired devices.  For example, one may set up a channel with a GFP filter cube plus the UserDefinedStateDevice 'SetPosition-command-1' set to 'M B000010', given a 488 nm laser plugged into shield output C2.  The Micro-manager documentation has some additional tips for the configuration of this device.
+
+The UserDefinedShutter device turns on the first output in the sequence buffer (with 'Q' string) or all outputs off ('O').  This also configures the controller to ignore any input signal from the FIRE inputs (this can be reset by restarting Arduino, restarting serial communication to board - including loading a new Hardware Configuration w/o shutter in Micro-manager, or sending 'X' string over serial).  With the shutter control, outputs can be toggled directly through the Micro-manager GUI shutter buttons or with the Auto-shutter.  This is particuarly useful if your system does not use or require a clock signal from the camera.  
+
+Files .\BasicController\Micro-MangerDemo\StateDevices\*.cfg include demo configurations for the Basic Controller as a UserDefinedStateDevice, UserDefinedShutter, or both. These will hopefully be useful in getting started with these features.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 * Advanced System Controller *

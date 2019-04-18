@@ -24,6 +24,7 @@
  *  U - Echo only first array sequence as byte. Terse output version of 'E'.
  *  W BXXXXXX - Turn on array BXXXXXX directly.  No sequencing or triggering.
  *  X - All off and reset to trigger-enabled setting.
+ *  ? X - Query state of device X.  Supported devices : S = shutter open (0 = closed, 1 = open)
  *  
  *  
  *  Button with pull-down resistor into pin 3
@@ -50,6 +51,8 @@ unsigned long preIllumTime = 0;
 int postIllumSeq = {0x00};
 unsigned long postIllumTime = 0;
 volatile int digitCount = 1;
+
+boolean shutterState = false;
 
 // Incoming trigger variables
 const int triggerPin = 2;
@@ -82,6 +85,8 @@ void setup() {
   seqArray[0] = 0x3F;
   seqRepeat[0] = 1;
   arraySize = 1;
+
+  PORTC = 0x00;
 
   attachInterrupt(digitalPinToInterrupt(triggerPin), ToggleLED,  CHANGE);
   pinMode(buttonPin, INPUT);
@@ -420,6 +425,12 @@ void loop() {
             seqArray[arraySize] = readVal;
             Serial.print("Appended B");
             Serial.println(seqArray[arraySize], BIN);
+
+            if (shutterState) {
+              Q
+              PORTC = seqArray[0];
+            }
+            
             arraySize++;
           }
 
@@ -487,7 +498,7 @@ void loop() {
       case ('O') :
 
         Serial.println("Turn off all outputs");
-
+        shutterState = false;
         PORTC = 0x00;
 
         break;
@@ -519,6 +530,7 @@ void loop() {
       case ('Q') : 
 
         Serial.println("Turn on first sequence");
+        shutterState = true;
         detachInterrupt(digitalPinToInterrupt(triggerPin));
         PORTC = seqArray[0];
 
@@ -617,7 +629,28 @@ void loop() {
         break;   
 
 
+      case ('?') : 
 
+        // Query device state
+        // State depends on next character
+
+        switch (inputString[2]) {
+
+          case ('S'):
+
+          // Return current shutter state
+            if (shutterState){
+              Serial.println('1');            
+            }
+            else {
+              Serial.println('0');
+            }
+
+            break;
+            
+        }
+
+        break;
 
 
 
