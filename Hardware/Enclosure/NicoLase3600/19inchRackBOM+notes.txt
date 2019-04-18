@@ -1,0 +1,31 @@
+Under-table rack for compact microscopy system installation. 
+
+This rack is straightforward to assemble and can hold a 6-color laser launch, microscopy power supply and control box accessories, a PC, and a power strip while easily sliding under a typical optical table (ie Newport VIS3036).  A 19" rack power strip is useful, or even 2 if there are a lot of accessories included.  Power strips and shelves can be mounted from front or back depending on desired access.  A rear-facing shelf is a great place to zip tie all of those pesky power supplies microscopes and cameras seem to require. 
+
+This rack has been tested with multiple ASI diSPIM systems and Olympus IX83 widefield microscopes.  All components for laser launch and instrument control can fit within the rack volume. 
+
+Structural 80/20 components:
+
+All below made from 1" 80/20 T slot aluminum. Tolerances should be sufficient for 25 mm metric material to be used with no modifications. 
+
+All holes 5.1 mm to 5.5 mm in diameter.  All taps 1/4"-20 (M6 likely OK if using metric fasteners). 
+
+A - Qty 4. As in drawing .\rackSideRailDrawing.pdf (see note below). 620 mm long. Tap bottom end as indicated.
+B - Qty 4. 620 mm long. 2x drill at 12.5 mm from each end and at 177 mm from top end. Tap bottom end.
+C - Qty 7. 441 mm long. Tap both ends.
+D - Qty 4. 610 mm long. Tap both ends.
+E - Qty 2. As D, but with holes at 61.5 and 317.5 mm from one end. 
+
+Note on part A - The milled groove is required if using a 'wide' rack mount part where the body of the part is wider than 441 mm (~17 3/16"). Some 19" rack enclosures are sufficiently wide to require this modification.  As drawn the groove is proper length for a 3U enclosure with some extra.  This can be extended towards bottom of part as long as is desired, as long as modification is stopped at least 1" from bottom. Minimum depth of groove is whatever is sufficient to fit component in question, up to ~5 mm (3/16").  Beyond this the integrity of the front face groove will be in question.  The nominal groove is sufficient to allow the rack to hold an ASI TIGER controller box.
+
+Additional 80/20 components required:
++ 26 end fasteners (80/20 part 3895 or equivalent)
++ 4 roll-in T nuts (80/20 part 3313, 3670, or similar)
++ Additional T nuts for rack mount components.
+
+Additional components:
++ 1 acrylic shelf (laser cut from 6 mm or 1/4" acrylic, ./rackShelf.dxf file)
++ 4 threaded stud levelling feet (McMaster-Carr part 62805K32 or equivalent)
++ Arduino mount (https://github.com/PRNicovich/3D-Printed-Optics-Lab-Parts/tree/master/Arduino%20Mount).  Drill holes in acrylic shelf to mount.
+
+CAD file included in this folder if you want specific measurements or modify for your own use.

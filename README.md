@@ -54,6 +54,8 @@ Excitation filters can be mounted in standard lens mounts, or options for 3D pri
 
 Drawings and pictures of enclosures are provided (one a bit more 'polished' than the other).  These keep the lasers away from the unsuspecting eyes of users and the optics protected from bumps and dust.  Components for the NicoLase 1500 enclosure are from 80/20 using 25 mm aluminum profile.  The 2400 enclosure is made of corrugated plastic sheeting and held together with magnets and 3D printed magnet clips (available [here](https://github.com/PRNicovich/3D-Printed-Optics-Lab-Parts/tree/master/Magnet%20Clips)).  In both cases the laser power supplies are on the optical table with the breadboard and lasers above, but there's no reason the whole assembly can't be moved to a shelf off of the optical table if you need the space.  
 
+**Update April 2019** - Plans for an enclosure in the form factor of a 19" rack (that fits under the optical table!) is included in 3600 model folder.  This rack can hold the NicoLase breadboard in the upper compartment with additional accessories and equipment underneath. This includes laser power supplies (on their own shelf) with any additional boxes, power supplies, or even a PC underneath.  Laser portion can be enclosed for a facility or dark room application.  Whole thing sits on sliding feet to fit under the optical table making a very convenient package! 
+
 Technical drawings for all machined components are given.  These were sufficient for our Uni's machine shop to complete satisfactory work with no additional consultation.  
 
 #### Optics
@@ -72,11 +74,11 @@ A procedure for the assembly and alignment of the optics has also been included 
 ###### One mirror or two?
 Using two mirrors to steer a beam from one vector to another is taken as dogma for most applications. It is true that this is necessary for arbitrary output and input vectors, but that's not the case here.  
 
-Because lasers with identical beam heights and angle relative to the breadboard are used (assuming proper machining tolerances on the mounting block), one degree of freedom is removed. As such you don't need four adjusters to steer the beam into the fiber coupler, but rather three.  This means that you can use a single three-adjuster mirror mount and, as a result, squeeze 6 laser heads and steering optics into a single 450 mm x 300 mm footprint.  This layout is given in the NicoLase 1500 description.  
+Because lasers with identical beam heights and angle relative to the breadboard are used (assuming proper machining tolerances on the mounting block), one degree of freedom is removed. As such you don't need four adjusters to steer the beam into the fiber coupler, but rather three.  This means that you can use a single three-adjuster mirror mount and, as a result, squeeze 6 laser heads and steering optics into a single 450 mm x 300 mm footprint.  Alignment of a single-mirror system is only marginally more difficult than aligning the two mirror system. This layout is given in the NicoLase 1500 description.  
 
 A more typical two adjuster layout is used in the NicoLase 2400.  This uses a pair of two-adjuster mirrors for each laser and fits four lasers into the 450 mm x 300 mm footprint.  Using two mirrors does have more tolerance for lasers that might have unequal beam heights, such as when mixing Vortran and OBIS diode heads in a single unit. 
 
-Alignment of a single-mirror system is only marginally more difficult than aligning the two mirror system.  The single-mirror system is more stable. 
+**Update April 2019** - A new, improved, 6 head version included as NicoLase 3600.  This combines the loads of lasers in the 1500 (plus an one more!) with the ease of alignment of the 2400.  The use of new Thorlabs 12 mm posts and 1/2" optics squeezes an additional mirror path in the same footprint as the other NicoLase designs.  The resulting design is easier to align and support combinations of laser makers who might have slightly different opinions on what a 3/4" beam height actually is.  This breadboard design is also a bit taller (1.6" inches vs 1.5") to avoid the need of any additional custom-made mounting components beyond the heat sink.  This combined with the new rack mount enclosure is a compact, easy to align, integrated solution for your microscope hardware. 
 
 
 #### Controller

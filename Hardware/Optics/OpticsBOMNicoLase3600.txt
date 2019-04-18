@@ -1,0 +1,63 @@
+Bill of Materials for NicoLase 3600
+Two-mirror laser combiner and fiber launcher for up to 6 laser diodes
+
+Parts listed for 6 laser installation (405 nm, 488 nm, 514 nm, 561 nm, 594 nm, and 640 nm)
+
+Machined components:
+- NicoLase1600 Imperial Heatsink Block (../HeatSinkBlock/NicoLase 1600 Imperial Heat Sink Block.pdf)
+
+Printed components (optional):
+- 6 x "Half-inch Ex Filter Holder.stl" or "Half-inch Ex Filter Holder VORTRAN.stl" 
+- 6 x "Half-inch Ex Filter Face.stl" 
+
+All located at https://github.com/PRNicovich/3D-Printed-Optics-Lab-Parts/tree/master/Half-inch%20filter%20Holder
+
+Thorlabs components:
+- 1 x MB1218
+- 6 x POLARIS-K1 (or POLARIS-K1-H or POLARIS-K1-2AH)
+- 5 x POLARIS-K05
+- 1 x PAF2-A4A
+- 1 x HCP
+- 1 x P3-405BPM-FC-2 or custom (see below)
+- 2 x PF10-03-P01 or equivalent 1" round mirrors
+- 10 x PF05-03 or equivalent 1/2" round mirrors
+- 10 x TRP1
+- 10 x MSC2
+- 8 x RS05P
+- 1 x FMP1
+- 5 x FMP05
+- 1 x RS4M
+- 7 x CF038
+- Desired fiber.  P3-460B-FC-5 is stock and usually works, but Thorlabs will do a custom one with config:
+Fiber: S405-XP,Tubing: FT030-Y,End 1: FC/APC,End 2: FC/APC,Length: 5 m
+That has a spec'd cut-off wavelength < 405 nm (vs anywhere between 370 nm and 470 nm for stock) and is like $50 more than stock. 
+
+Chroma components:
+- ZT405rdc	405/488 combiner
+- ZT488rdc	488/514 combiner
+- ZT532rdc	514/561 combiner
+- ZT568rdc	561/594 combiner
+- ZT594rdc	594/637 combiner
+
+All 25 mm round, unmounted.  
+May be difficult to mount 1 mm thick round dichroics in POLARIS mounts w/ flexure spring.  In this case, a spacer cut from acrylic between back of mount and dichroic is helpful.  An example part to laser cut from 1.5 mm (1/16") acrylic sheet is available in file:
+
+.\DichroicSpacers v2.step
+
+Optional emission filters:
+Semrock components:
+- LD01-405/10-12.5	405 laser clean-up
+- FF01-488/10-12.5	488 laser clean-up
+- FF01-513/13-12.5	514 laser clean-up
+- LL02-561-12.5		561 laser clean-up
+- FF01-591/6-12.5	594 laser clean-up
+- LD01-640/8-12.5	637 laser clean-up
+
+All 12.5 mm round, mounted
+
+Alignment notes:
+Start with 1" mounts containing mirrors (not dichroics) in place along with fiber coupler. Align red-most laser into fiber coupler using those two mirrors.  Can start with a rough alignment through aperture of fiber coupler now.  These mirrors now define the combined beam path.  Then working red to blue, add in additional lines using each diode's 1" dichroic mount and two 1/2" mirrors.  These should be aligned to the beam path defined by the red-most laser.  Once all are co-aligned and roughly aligned to the fiber coupler, use a middle wavelength to align the fiber coupler into the fiber.  Then fine tune each of the other lines using adjusters on the respective 1" mount and/or the 1/2" mirror.  Do not adjust the mirror immediately upstream of the fiber coupler unless absolutely necessary as this negates much of the other alignment. 
+
+Final coupling of > 50% into a single-mode fiber for all 6 visible lines is certainly achievable. 
+
+
