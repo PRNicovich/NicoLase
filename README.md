@@ -112,7 +112,7 @@ The Basic Controller is simpler to operate and is sufficient for most applicatio
 
 Both configurations use the same hardware and share many of the same serial commands. Switching between the two options is a matter of uploading the appropriate sketch to the Arduino and intefacing with the respective PC-side software or serial commands.
 
-####### Basic Controller
+###### Basic Controller
 
 Triggering (via either the PCB MASTERFIRE or SLAVEFIRE connection) triggers an interrupt on the Arduino. A rising edge causes the laser outputs (CH1 through CH6) to go high.  A falling edge on the trigger pulse drives the laser outputs low and iterates the programmed sequence to the next one.  If the end of the sequence list is reached the Arduino goes back to the start.  Any given line of the sequence can be repeated any number of times (up to 2147483647 times per line).  
 
@@ -143,6 +143,8 @@ The Arduino is added to the Micro-manager config as a FreeSerialPort device (be 
 For the Basic Controller an example Micro-manager script to communicate laser sequence settings are given for inclusion into the Beanshell interface.  A MATLAB GUI for easily uploading arbitrary sequences is also included.  This can run in parallel with Micro-manager if the FreeSerialPort has NOT been added to the Micro-manager config, or in your own external application. 
 
 A Micro-manager plug-in for the Advanced System Controller includes a GUI for programming laser and camera sequencing as well as loop and step timing.  The configuration is passed to the Arduino via serial commands and the acquisition sequence begun.  The plug-in then reassembles the data sequence into the proper multidimensional stack, including separating channels by camera and laser configuration dimension.  
+
+**Update March 2019** - The Basic Controller now supports use as a SerialStateDevice and SerialShutter in MicroManager.  This allows you to control the laser sequencer just like a physical shutter or filter wheel.  See the software build notes for details.
 
 ### Triggering
 A diagram of the triggering sequence in the default external clock mode is given below:
