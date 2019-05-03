@@ -121,7 +121,7 @@ triggering and associated controller functions is given in the Triggering sectio
 
 Additional commands enable configuration of the controller as a UserDefinedStateDevice and UserDefinedShutter device in Micro-Manager.  In this mode basic fluorescence microscopy functions (select a laser set and toggle on/off) directly through Micro-manager GUI.  For those wishing to use the NicoLase in a straightforward or multi-user environment this may be useful. 
 
-####### Advanced System Controller
+###### Advanced System Controller
 
 The basic controls for laser sequencing during a camera-synchronized acquisition described above are supported.  In addition there is an available mode in which the Arduino can act as the master system clock.  The camera and lasers are then both driven by the Arduino system clock.
 
