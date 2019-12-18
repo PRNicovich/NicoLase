@@ -78,7 +78,11 @@ Because lasers with identical beam heights and angle relative to the breadboard 
 
 A more typical two adjuster layout is used in the NicoLase 2400.  This uses a pair of two-adjuster mirrors for each laser and fits four lasers into the 450 mm x 300 mm footprint.  Using two mirrors does have more tolerance for lasers that might have unequal beam heights, such as when mixing Vortran and OBIS diode heads in a single unit. 
 
-**Update April 2019** - A new, improved, 6 head version included as NicoLase 3600.  This combines the loads of lasers in the 1500 (plus an one more!) with the ease of alignment of the 2400.  The use of new Thorlabs 12 mm posts and 1/2" optics squeezes an additional mirror path in the same footprint as the other NicoLase designs.  The resulting design is easier to align and support combinations of laser makers who might have slightly different opinions on what a 3/4" beam height actually is.  This breadboard design is also a bit taller (1.6" inches vs 1.5") to avoid the need of any additional custom-made mounting components beyond the heat sink.  This combined with the new rack mount enclosure is a compact, easy to align, integrated solution for your microscope hardware. Special thanks to Mike Taormina for the clever design.
+**Update April 2019** - A new, improved, 6 head version included as NicoLase 3600.  This combines the loads of lasers in the 1500 (plus an one more!) with the ease of alignment of the 2400.  The use of new Thorlabs 12 mm posts and 1/2" optics squeezes an additional mirror path in the same footprint as the other NicoLase designs.  The resulting design is easier to align and support combinations of laser makers who might have slightly different opinions on what a 3/4" beam height actually is.  This breadboard design is also a bit taller (1.6" inches vs 1.5"; 39.3 mm vs 38.1 mm) with a to avoid the need of any additional custom-made mounting components beyond the heat sink.  This combined with the new rack mount enclosure is a compact, easy to align, integrated solution for your microscope hardware. 
+
+An additional 5-head version of the heat sink is included (NicoLase 3500) that allows additional beam conditioning or steering accessories to be included on the breadboard.  Like the 3600, there is a 39.3 mm beam height, dual mirror alignment on the fold-in lines, and fits well in the 19" rack style enclosure.
+
+Special thanks to Mike Taormina for the clever design.
 
 
 #### Controller
