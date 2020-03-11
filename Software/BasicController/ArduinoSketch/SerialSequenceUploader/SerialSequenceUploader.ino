@@ -22,6 +22,7 @@
  *  S XX - Set sequence counter to XX
  *  T - Test main sequence programmed
  *  U - Echo only first array sequence as byte. Terse output version of 'E'.
+ *  V - Return version string.
  *  W BXXXXXX - Turn on array BXXXXXX directly.  No sequencing or triggering.
  *  X - All off and reset to trigger-enabled setting.
  *  ? X - Query state of device X.  Supported devices : S = shutter open (0 = closed, 1 = open)
@@ -32,6 +33,9 @@
  *  
  *  Serial requires 9600 baud, newline characters only for line feed
 */
+
+// Version variables
+const String version = 1.2;
 
 // Serial variables
 String inputString = "";         // a string to hold incoming data
@@ -591,6 +595,13 @@ void loop() {
         }
 
         break;
+		
+	  case ('V') :
+		// Return version via serial port
+		Serial.print("Version : ");
+		Serial.println(version);
+		
+		break;
 
       case ('W') :
 
