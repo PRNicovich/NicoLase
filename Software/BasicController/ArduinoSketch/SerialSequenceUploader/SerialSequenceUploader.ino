@@ -25,6 +25,7 @@
  *  V - Return version string.
  *  W BXXXXXX - Turn on array BXXXXXX directly.  No sequencing or triggering.
  *  X - All off and reset to trigger-enabled setting.
+ *  Y - Return device ID ('NicoLaseSequencer')
  *  ? X - Query state of device X.  Supported devices : S = shutter open (0 = closed, 1 = open)
  *  
  *  
@@ -35,7 +36,7 @@
 */
 
 // Version variables
-const String version = 1.2;
+const String version = "1.2";
 
 // Serial variables
 String inputString = "";         // a string to hold incoming data
@@ -431,7 +432,7 @@ void loop() {
             Serial.println(seqArray[arraySize], BIN);
 
             if (shutterState) {
-              Q
+
               PORTC = seqArray[0];
             }
             
@@ -637,7 +638,12 @@ void loop() {
         PORTC = 0x00;
         attachInterrupt(digitalPinToInterrupt(triggerPin), ToggleLED,  CHANGE);
         
-        break;   
+        break;  
+
+	   case ('Y') : 
+		// Return device ID 
+		Serial.println("NicoLaseSequencer");
+		break;
 
 
       case ('?') : 
@@ -651,10 +657,10 @@ void loop() {
 
           // Return current shutter state
             if (shutterState){
-              Serial.println('1');            
+              Serial.println("1");            
             }
             else {
-              Serial.println('0');
+              Serial.println("0");
             }
 
             break;
@@ -662,6 +668,12 @@ void loop() {
         }
 
         break;
+	
+	  default :
+	  // Command not recognized. Return error character 0x15.
+	      Serial.println(15, HEX);
+		  
+		break;
 
 
 
