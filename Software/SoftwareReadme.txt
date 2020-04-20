@@ -40,6 +40,10 @@ The UserDefinedShutter device turns on the first output in the sequence buffer (
 
 Files .\BasicController\Micro-MangerDemo\StateDevices\*.cfg include demo configurations for the Basic Controller as a UserDefinedStateDevice, UserDefinedShutter, or both. These will hopefully be useful in getting started with these features.
 
+- Python
+
+Class and demo script for implementing communication with NicoLase controller via Python. 
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 * Advanced System Controller *
 
