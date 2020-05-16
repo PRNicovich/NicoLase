@@ -150,6 +150,8 @@ A Micro-manager plug-in for the Advanced System Controller includes a GUI for pr
 
 **Update March 2019** - The Basic Controller now supports use as a SerialStateDevice and SerialShutter in MicroManager.  This allows you to control the laser sequencer just like a physical shutter or filter wheel.  See the software build notes for details.
 
+**Update May 2020** - Basic controller sketch can now be controlled via the nicoLase Python class.  Package is in ./Software/BasicController/Python.  Run "pip install -e ." with terminal pointed to that directory to install. 
+
 ### Triggering
 A diagram of the triggering sequence in the default external clock mode is given below:
 
