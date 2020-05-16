@@ -10,43 +10,6 @@ Supports functionality of NicoLase Basic Controller for laser selection and comm
 
 From Arduino sketch (.\NicoLase\Software\BasicController\ArduinoSketch\SerialSequenceUploader\SerialSequenceUploader.ino):
 
-/* Serial comands :
- *  A BXXXXXX - Append pattern to main sequence.  BXXXXXX is binary pattern, from Red-Blue
- *  B BXXXXXX - Set pre-collection sequence.  BXXXXXX is binary pattern, from Red-Blue.  
- *              There can only be one of these and is used, for example, to allow 405 laser to expose for M ms 
- *  C - Clear programmed sequence
- *  D BXXXXXX - Set post-collection sequence.  As in B.
- *  E - Echo sequence of pattern (in Hex)
- *  F - Set first value in sequence to B00111111, or all 6 on
- *  G long X - set exposure time for pre-acquisition sequence B
- *  H long X - set exposure time for post-acquisition sequence D
- *  I Bool X - True/false for pre-acquisition sequence to be followed by camera trigger out
- *  J long X - set delay between pre-acquisition sequence and camera trigger out
- *  K - Call pre-acquisition sequence B for time set in G
- *  L - Call post-acquisition sequence D for time set in H  
- *  M BXXXXXX - Set pattern as only in sequence. Equivalent to 'C\nA BXXXXXX'
- *  N long,long,long..., - Set counter numbers for each A sequence. 
- *                        Each will be called N[i] times before moving to next, then back to start
- *  O - Turn off all outputs, ignoring input shutter state. Call 'X' to reset shutter state.
- *  P - Add pre-programmed sequence of Blue-Red individually
- *  Q - Turn on first pattern in programmed sequence, ignoring input shutter state.  Do not iterate counter.
- *  R - Reset sequence counter to 0 and cycleNum to 0 (reset)
- *  S XX - Set sequence counter to XX
- *  T - Test main sequence programmed
- *  U - Echo only first array sequence as byte. Terse output version of 'E'.
- *  V - Return version string.
- *  W BXXXXXX - Turn on array BXXXXXX directly.  No sequencing or triggering.
- *  X - All off and reset to trigger-enabled setting.
- *  Y - Return device ID ('NicoLaseSequencer')
- *  ? X - Query state of device X.  Supported devices : S = shutter open (0 = closed, 1 = open)
- *  
- *  
- *  Button with pull-down resistor into pin 3
- *  LEDs with pins A0-A5 (Red-Blue, C6-C1) as sources
- *  
- *  Serial requires 9600 baud, newline characters only for line feed
-*/
-
 """
 import time
 
@@ -97,7 +60,7 @@ class NicoLaseDriver():
         
         return retString
     
-    def numToLongInteger(self, exTime):
+    def numToLongIntegerStr(self, exTime):
         """
         Utility function to convert input time to long integer
         """
@@ -151,7 +114,7 @@ class NicoLaseDriver():
         Input seq can be any numerical form (binary, hex, or decimal)
         """
         fmtStr = self.numToBinaryString(seq)
-        self.writeAndRead('D' + fmtStr)    
+        self.writeAndRead('D ' + fmtStr)    
         
     # E
     def echoAllSeq(self):
@@ -165,7 +128,7 @@ class NicoLaseDriver():
         print(rd)
         
     # F
-    def allOnSeq(self, seq):
+    def allOnSeq(self):
         """ 
         Set sequence to 'all on'
         """
@@ -177,7 +140,7 @@ class NicoLaseDriver():
         Set pre-sequenc time
         """      
         filtNum = self.numToLongIntegerStr(exTime)
-        self.writeAndRead('G' + filtNum)
+        self.writeAndRead('G ' + filtNum)
         
     # H
     def setPostSeqExTime(self, exTime):
@@ -185,7 +148,7 @@ class NicoLaseDriver():
         Set post-sequenc time
         """      
         filtNum = self.numToLongIntegerStr(exTime)
-        self.writeAndRead('H' + filtNum)
+        self.writeAndRead('H ' + filtNum)
         
     def triggerAfterPreAcq(self, boolX):
         """ 
