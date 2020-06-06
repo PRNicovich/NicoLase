@@ -159,9 +159,17 @@
 <wire x1="58.09" y1="7.62" x2="58.09" y2="69.84" width="0" layer="20"/>
 <wire x1="58.09" y1="69.84" x2="3.81" y2="69.84" width="0" layer="20"/>
 <wire x1="3.81" y1="69.84" x2="3.81" y2="7.62" width="0" layer="20"/>
-<text x="6.35" y="63.5" size="1.27" layer="21">NicoLase 1500
-Trigger Processing Shield
-v 2.1</text>
+<text x="57.5564" y="8.382" size="1.27" layer="21" font="vector" ratio="12" align="bottom-right">NicoLase 1500
+Trigger Processing Shield</text>
+<text x="20.7264" y="13.9192" size="1.27" layer="21" font="vector" ratio="15" rot="R90" align="top-center">MASTER
+TRIGGER</text>
+<text x="20.7264" y="29.1592" size="1.27" layer="21" font="vector" ratio="15" rot="R90" align="top-center">MASTER
+FIRE</text>
+<text x="20.7264" y="44.45" size="1.27" layer="21" font="vector" ratio="15" rot="R90" align="top-center">SLAVE
+FIRE</text>
+<text x="20.7264" y="59.69" size="1.27" layer="21" font="vector" ratio="15" rot="R90" align="top-center">SLAVE
+TRIGGER</text>
+<text x="57.5564" y="67.8688" size="1.27" layer="21" font="vector" ratio="12" align="bottom-right">v 2.2</text>
 </plain>
 <libraries>
 <library name="con-coax">
@@ -2872,7 +2880,7 @@ design rules under a new name.</description>
 <element name="C1" library="con-coax" package="B35N61" value="BN35N61" x="31.75" y="16.51" smashed="yes">
 <attribute name="MF" value="" x="31.75" y="16.51" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="" x="31.75" y="16.51" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="27.94" y="21.59" size="1.27" layer="25"/>
+<attribute name="NAME" x="32.3596" y="22.86" size="1.27" layer="25" font="vector" ratio="15" rot="R90" align="bottom-center"/>
 <attribute name="OC_FARNELL" value="unknown" x="31.75" y="16.51" size="1.778" layer="27" display="off"/>
 <attribute name="OC_NEWARK" value="unknown" x="31.75" y="16.51" size="1.778" layer="27" display="off"/>
 <attribute name="VALUE" x="27.94" y="10.16" size="1.27" layer="27"/>
@@ -2880,7 +2888,7 @@ design rules under a new name.</description>
 <element name="C2" library="con-coax" package="B35N61" value="BN35N61" x="46.99" y="16.51" smashed="yes">
 <attribute name="MF" value="" x="46.99" y="16.51" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="" x="46.99" y="16.51" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="43.18" y="21.59" size="1.27" layer="25"/>
+<attribute name="NAME" x="47.4472" y="22.86" size="1.27" layer="25" font="vector" ratio="15" rot="R90" align="bottom-center"/>
 <attribute name="OC_FARNELL" value="unknown" x="46.99" y="16.51" size="1.778" layer="27" display="off"/>
 <attribute name="OC_NEWARK" value="unknown" x="46.99" y="16.51" size="1.778" layer="27" display="off"/>
 <attribute name="VALUE" x="43.18" y="10.16" size="1.27" layer="27"/>
@@ -2888,7 +2896,7 @@ design rules under a new name.</description>
 <element name="C3" library="con-coax" package="B35N61" value="BN35N61" x="46.99" y="31.75" smashed="yes" rot="R90">
 <attribute name="MF" value="" x="46.99" y="31.75" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="MPN" value="" x="46.99" y="31.75" size="1.778" layer="27" rot="R90" display="off"/>
-<attribute name="NAME" x="41.91" y="27.94" size="1.27" layer="25" rot="R90"/>
+<attribute name="NAME" x="41.8592" y="31.8516" size="1.27" layer="25" font="vector" ratio="15" rot="R90" align="bottom-center"/>
 <attribute name="OC_FARNELL" value="unknown" x="46.99" y="31.75" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="OC_NEWARK" value="unknown" x="46.99" y="31.75" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="VALUE" x="53.34" y="27.94" size="1.27" layer="27" rot="R90"/>
@@ -2896,7 +2904,7 @@ design rules under a new name.</description>
 <element name="C4" library="con-coax" package="B35N61" value="BN35N61" x="46.99" y="48.26" smashed="yes" rot="R90">
 <attribute name="MF" value="" x="46.99" y="48.26" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="MPN" value="" x="46.99" y="48.26" size="1.778" layer="27" rot="R90" display="off"/>
-<attribute name="NAME" x="41.91" y="44.45" size="1.27" layer="25" rot="R90"/>
+<attribute name="NAME" x="41.8592" y="48.4124" size="1.27" layer="25" font="vector" ratio="15" rot="R90" align="bottom-center"/>
 <attribute name="OC_FARNELL" value="unknown" x="46.99" y="48.26" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="OC_NEWARK" value="unknown" x="46.99" y="48.26" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="VALUE" x="53.34" y="44.45" size="1.27" layer="27" rot="R90"/>
@@ -2904,7 +2912,7 @@ design rules under a new name.</description>
 <element name="C5" library="con-coax" package="B35N61" value="BN35N61" x="46.99" y="63.5" smashed="yes" rot="R90">
 <attribute name="MF" value="" x="46.99" y="63.5" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="MPN" value="" x="46.99" y="63.5" size="1.778" layer="27" rot="R90" display="off"/>
-<attribute name="NAME" x="41.91" y="59.69" size="1.27" layer="25" rot="R90"/>
+<attribute name="NAME" x="41.8592" y="63.7032" size="1.27" layer="25" font="vector" ratio="15" rot="R90" align="bottom-center"/>
 <attribute name="OC_FARNELL" value="unknown" x="46.99" y="63.5" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="OC_NEWARK" value="unknown" x="46.99" y="63.5" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="VALUE" x="53.34" y="59.69" size="1.27" layer="27" rot="R90"/>
@@ -2912,42 +2920,40 @@ design rules under a new name.</description>
 <element name="C6" library="con-coax" package="B35N61" value="BN35N61" x="31.75" y="63.5" smashed="yes">
 <attribute name="MF" value="" x="31.75" y="63.5" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="" x="31.75" y="63.5" size="1.778" layer="27" display="off"/>
-<attribute name="NAME" x="27.94" y="68.58" size="1.27" layer="25"/>
+<attribute name="NAME" x="32.4612" y="57.3024" size="1.27" layer="25" font="vector" ratio="15" rot="R90" align="bottom-center"/>
 <attribute name="OC_FARNELL" value="unknown" x="31.75" y="63.5" size="1.778" layer="27" display="off"/>
 <attribute name="OC_NEWARK" value="unknown" x="31.75" y="63.5" size="1.778" layer="27" display="off"/>
 <attribute name="VALUE" x="27.94" y="57.15" size="1.27" layer="27"/>
 </element>
 <element name="IC1" library="40xx" package="SO16" value="4050D" x="30.48" y="33.02" smashed="yes" rot="R180">
-<attribute name="NAME" x="35.941" y="35.052" size="1.27" layer="25" ratio="10" rot="R270"/>
+<attribute name="NAME" x="25.0698" y="33.9344" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 <attribute name="VALUE" x="34.544" y="33.655" size="1.27" layer="27" ratio="10" rot="R180"/>
 </element>
 <element name="MASTERFIRE" library="con-coax" package="B35N61" value="BN35N61" x="15.24" y="29.21" smashed="yes" rot="R270">
 <attribute name="MF" value="" x="15.24" y="29.21" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="MPN" value="" x="15.24" y="29.21" size="1.778" layer="27" rot="R270" display="off"/>
-<attribute name="NAME" x="20.32" y="33.02" size="1.27" layer="25" rot="R270"/>
 <attribute name="OC_FARNELL" value="unknown" x="15.24" y="29.21" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="OC_NEWARK" value="unknown" x="15.24" y="29.21" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="VALUE" x="8.89" y="33.02" size="1.27" layer="27" rot="R270"/>
 </element>
 <element name="R1" library="SparkFun-Resistors" package="1206" value="10k" x="27.94" y="48.26" smashed="yes">
-<attribute name="NAME" x="26.67" y="49.403" size="0.4064" layer="25"/>
+<attribute name="NAME" x="28.4734" y="50.4444" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 <attribute name="VALUE" x="26.543" y="46.736" size="0.4064" layer="27"/>
 </element>
 <element name="R2" library="SparkFun-Passives" package="1206" value="10k" x="27.94" y="40.64" smashed="yes">
-<attribute name="NAME" x="26.67" y="41.783" size="0.4064" layer="25"/>
+<attribute name="NAME" x="28.4734" y="42.8244" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 <attribute name="VALUE" x="26.543" y="39.116" size="0.4064" layer="27"/>
 </element>
 <element name="R3" library="resistor" package="M1206" value="220" x="27.94" y="53.34" smashed="yes">
-<attribute name="NAME" x="26.67" y="54.61" size="1.27" layer="25"/>
+<attribute name="NAME" x="28.4988" y="55.6768" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 <attribute name="VALUE" x="26.67" y="50.8" size="1.27" layer="27"/>
 </element>
 <element name="S1" library="SparkFun-Retired" package="TACTILE-PTH" value="" x="35.56" y="43.18" smashed="yes" rot="R90">
-<attribute name="NAME" x="31.75" y="40.64" size="1.27" layer="25" ratio="10" rot="R90"/>
+<attribute name="NAME" x="30.4292" y="43.4848" size="1.27" layer="25" font="vector" ratio="15" rot="R270" align="bottom-center"/>
 </element>
 <element name="SLAVEFIRE" library="con-coax" package="B35N61" value="BN35N61" x="15.24" y="44.45" smashed="yes" rot="R270">
 <attribute name="MF" value="" x="15.24" y="44.45" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="MPN" value="" x="15.24" y="44.45" size="1.778" layer="27" rot="R270" display="off"/>
-<attribute name="NAME" x="20.32" y="48.26" size="1.27" layer="25" rot="R270"/>
 <attribute name="OC_FARNELL" value="unknown" x="15.24" y="44.45" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="OC_NEWARK" value="unknown" x="15.24" y="44.45" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="VALUE" x="8.89" y="48.26" size="1.27" layer="27" rot="R270"/>
@@ -2955,41 +2961,39 @@ design rules under a new name.</description>
 <element name="SLAVETRIGGER" library="con-coax" package="B35N61" value="BN35N61" x="15.24" y="59.69" smashed="yes" rot="R270">
 <attribute name="MF" value="" x="15.24" y="59.69" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="MPN" value="" x="15.24" y="59.69" size="1.778" layer="27" rot="R270" display="off"/>
-<attribute name="NAME" x="20.32" y="63.5" size="1.27" layer="25" rot="R270"/>
 <attribute name="OC_FARNELL" value="unknown" x="15.24" y="59.69" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="OC_NEWARK" value="unknown" x="15.24" y="59.69" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="VALUE" x="8.89" y="63.5" size="1.27" layer="27" rot="R270"/>
 </element>
 <element name="U1" library="SparkFun-DigitalIC" package="SOT353" value="7432SE" x="26.67" y="25.4" smashed="yes" rot="R90">
-<attribute name="NAME" x="27.432" y="24.13" size="0.4064" layer="25" rot="R180"/>
+<attribute name="NAME" x="26.2128" y="23.3172" size="1.016" layer="25" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 <attribute name="PROD_ID" value="IC-10842" x="26.67" y="25.4" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="VALUE" x="27.432" y="27.051" size="0.4064" layer="27" rot="R180"/>
 </element>
 <element name="MASTERTRIGGER" library="con-coax" package="B35N61" value="BN35N61" x="15.24" y="13.97" smashed="yes" rot="R270">
 <attribute name="MF" value="" x="15.24" y="13.97" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="MPN" value="" x="15.24" y="13.97" size="1.778" layer="27" rot="R270" display="off"/>
-<attribute name="NAME" x="20.32" y="17.78" size="1.27" layer="25" rot="R270"/>
 <attribute name="OC_FARNELL" value="unknown" x="15.24" y="13.97" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="OC_NEWARK" value="unknown" x="15.24" y="13.97" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="VALUE" x="8.89" y="17.78" size="1.27" layer="27" rot="R270"/>
 </element>
 <element name="J1" library="SparkFun-Boards" package="UNO_R3_SHIELD" value="ARDUINO_R3_SHIELD" x="3.81" y="2.54" smashed="yes"/>
 <element name="R4" library="SparkFun-Resistors" package="1206" value="10k" x="22.0472" y="36.0172" smashed="yes" rot="R180">
-<attribute name="NAME" x="23.3172" y="34.8742" size="0.4064" layer="25" rot="R180"/>
+<attribute name="NAME" x="21.5646" y="38.354" size="1.016" layer="25" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 <attribute name="VALUE" x="23.4442" y="37.5412" size="0.4064" layer="27" rot="R180"/>
 </element>
 <element name="R5" library="SparkFun-Resistors" package="1206" value="10k" x="18.8468" y="21.59" smashed="yes" rot="R90">
-<attribute name="NAME" x="17.7038" y="20.32" size="0.4064" layer="25" rot="R90"/>
+<attribute name="NAME" x="17.6022" y="21.6916" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 <attribute name="VALUE" x="20.3708" y="20.193" size="0.4064" layer="27" rot="R90"/>
 </element>
 <element name="C7" library="rcl" library_urn="urn:adsk.eagle:library:334" package="C1206" package3d_urn="urn:adsk.eagle:package:23618/2" value="0.1uF" x="23.5712" y="21.5392" smashed="yes" rot="R270">
-<attribute name="NAME" x="24.8412" y="22.8092" size="1.27" layer="25" rot="R270"/>
+<attribute name="NAME" x="21.336" y="21.844" size="1.016" layer="25" font="vector" ratio="12" rot="R270" align="bottom-center"/>
 <attribute name="POPULARITY" value="24" x="23.5712" y="21.5392" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="SPICEPREFIX" value="C" x="23.5712" y="21.5392" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="VALUE" x="21.0312" y="22.8092" size="1.27" layer="27" rot="R270"/>
 </element>
 <element name="C8" library="rcl" library_urn="urn:adsk.eagle:library:334" package="C1206" package3d_urn="urn:adsk.eagle:package:23618/2" value="0.1uF" x="39.0144" y="32.9184" smashed="yes" rot="R90">
-<attribute name="NAME" x="37.7444" y="31.6484" size="1.27" layer="25" rot="R90"/>
+<attribute name="NAME" x="37.846" y="32.9692" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 <attribute name="POPULARITY" value="24" x="39.0144" y="32.9184" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="SPICEPREFIX" value="C" x="39.0144" y="32.9184" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="VALUE" x="41.5544" y="31.6484" size="1.27" layer="27" rot="R90"/>
@@ -3277,15 +3281,17 @@ design rules under a new name.</description>
 <wire x1="15.24" y1="44.45" x2="19.4564" y2="44.45" width="0.4064" layer="1"/>
 <wire x1="19.4564" y1="44.45" x2="20.7772" y2="43.1292" width="0.4064" layer="1"/>
 <wire x1="20.7772" y1="43.1292" x2="20.7772" y2="36.1472" width="0.4064" layer="1"/>
-<wire x1="20.6472" y1="36.0172" x2="20.7772" y2="36.1472" width="0.4064" layer="1"/>
+<wire x1="20.6472" y1="36.0172" x2="20.7264" y2="36.0964" width="0.4064" layer="1"/>
 <wire x1="27.62" y1="24.75" x2="32.37" y2="24.75" width="0.4064" layer="1"/>
 <wire x1="32.37" y1="24.75" x2="33.02" y2="25.4" width="0.4064" layer="1"/>
 <via x="33.02" y="25.4" extent="1-16" drill="0.35"/>
-<wire x1="20.6472" y1="36.0172" x2="20.6472" y2="30.1528" width="0.4064" layer="1"/>
-<wire x1="20.6472" y1="30.1528" x2="22.86" y2="27.94" width="0.4064" layer="1"/>
-<via x="22.86" y="27.94" extent="1-16" drill="0.35"/>
-<wire x1="22.86" y1="27.94" x2="30.48" y2="27.94" width="0.4064" layer="16"/>
-<wire x1="30.48" y1="27.94" x2="33.02" y2="25.4" width="0.4064" layer="16"/>
+<wire x1="33.02" y1="25.4" x2="30.48" y2="27.94" width="0.4064" layer="16"/>
+<wire x1="21.6408" y1="27.94" x2="20.7264" y2="28.8544" width="0.4064" layer="16"/>
+<wire x1="20.7264" y1="28.8544" x2="20.7264" y2="33.7312" width="0.4064" layer="16"/>
+<via x="20.7264" y="33.7312" extent="1-16" drill="0.35"/>
+<wire x1="20.7264" y1="33.7312" x2="20.7264" y2="36.0964" width="0.4064" layer="1"/>
+<wire x1="20.7264" y1="36.0964" x2="20.7772" y2="36.1472" width="0.4064" layer="1"/>
+<wire x1="30.48" y1="27.94" x2="21.6408" y2="27.94" width="0.4064" layer="16"/>
 </signal>
 </signals>
 <mfgpreviewcolors>
