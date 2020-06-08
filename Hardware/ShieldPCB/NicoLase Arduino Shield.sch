@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="9.5.1">
+<eagle version="9.0.1">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -9825,17 +9825,17 @@ Source: AVX .. aphvc.pdf</description>
 <part name="R2" library="SparkFun-Passives" deviceset="RESISTOR" device="1206" value="10k"/>
 <part name="IC1" library="40xx" deviceset="4050" device="D" value="4050D"/>
 <part name="C1" library="con-coax" deviceset="BN35N61" device=""/>
-<part name="MASTERFIRE" library="con-coax" deviceset="BN35N61" device=""/>
+<part name="PRIMARYFIRE" library="con-coax" deviceset="BN35N61" device=""/>
 <part name="C2" library="con-coax" deviceset="BN35N61" device=""/>
 <part name="C3" library="con-coax" deviceset="BN35N61" device=""/>
 <part name="C4" library="con-coax" deviceset="BN35N61" device=""/>
 <part name="C5" library="con-coax" deviceset="BN35N61" device=""/>
 <part name="C6" library="con-coax" deviceset="BN35N61" device=""/>
-<part name="SLAVEFIRE" library="con-coax" deviceset="BN35N61" device=""/>
-<part name="SLAVETRIGGER" library="con-coax" deviceset="BN35N61" device=""/>
+<part name="2NDARYFIRE" library="con-coax" deviceset="BN35N61" device=""/>
+<part name="2NDARYTRIGGER" library="con-coax" deviceset="BN35N61" device=""/>
 <part name="U1" library="SparkFun-DigitalIC" deviceset="74*32" device="SE"/>
 <part name="R3" library="resistor" deviceset="R-US_" device="M1206" value="220"/>
-<part name="MASTERTRIGGER" library="con-coax" deviceset="BN35N61" device=""/>
+<part name="PRIMARYTRIGGER" library="con-coax" deviceset="BN35N61" device=""/>
 <part name="J1" library="SparkFun-Boards" deviceset="ARDUINO_R3_SHIELD" device=""/>
 <part name="R4" library="SparkFun-Resistors" deviceset="RESISTOR" device="1206" value="10k"/>
 <part name="R5" library="SparkFun-Resistors" deviceset="RESISTOR" device="1206" value="10k"/>
@@ -9866,7 +9866,7 @@ Source: AVX .. aphvc.pdf</description>
 <attribute name="VALUE" x="12.7" y="86.868" size="1.778" layer="96" rot="R270"/>
 <attribute name="NAME" x="21.082" y="86.36" size="1.778" layer="95" rot="R270"/>
 </instance>
-<instance part="MASTERFIRE" gate="G$1" x="152.4" y="86.36" smashed="yes" rot="R180">
+<instance part="PRIMARYFIRE" gate="G$1" x="152.4" y="86.36" smashed="yes" rot="R180">
 <attribute name="VALUE" x="157.48" y="86.36" size="1.778" layer="96"/>
 <attribute name="NAME" x="157.48" y="84.582" size="1.778" layer="95"/>
 </instance>
@@ -9890,11 +9890,11 @@ Source: AVX .. aphvc.pdf</description>
 <attribute name="VALUE" x="12.7" y="23.368" size="1.778" layer="96" rot="R270"/>
 <attribute name="NAME" x="21.082" y="22.86" size="1.778" layer="95" rot="R270"/>
 </instance>
-<instance part="SLAVEFIRE" gate="G$1" x="149.86" y="71.12" smashed="yes" rot="R90">
+<instance part="2NDARYFIRE" gate="G$1" x="149.86" y="71.12" smashed="yes" rot="R90">
 <attribute name="VALUE" x="154.94" y="71.12" size="1.778" layer="96"/>
 <attribute name="NAME" x="154.94" y="69.342" size="1.778" layer="95"/>
 </instance>
-<instance part="SLAVETRIGGER" gate="G$1" x="149.86" y="53.34" smashed="yes" rot="R90">
+<instance part="2NDARYTRIGGER" gate="G$1" x="149.86" y="53.34" smashed="yes" rot="R90">
 <attribute name="VALUE" x="147.32" y="48.26" size="1.778" layer="96"/>
 <attribute name="NAME" x="147.32" y="46.482" size="1.778" layer="95"/>
 </instance>
@@ -9914,7 +9914,7 @@ Source: AVX .. aphvc.pdf</description>
 <attribute name="NAME" x="135.6614" y="49.53" size="1.778" layer="95" rot="R90"/>
 <attribute name="VALUE" x="140.462" y="49.53" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="MASTERTRIGGER" gate="G$1" x="76.2" y="27.94" smashed="yes">
+<instance part="PRIMARYTRIGGER" gate="G$1" x="76.2" y="27.94" smashed="yes">
 <attribute name="VALUE" x="71.12" y="30.48" size="1.778" layer="96" rot="R180"/>
 <attribute name="NAME" x="71.12" y="27.178" size="1.778" layer="95" rot="R180"/>
 </instance>
@@ -9952,7 +9952,7 @@ Source: AVX .. aphvc.pdf</description>
 <pinref part="R5" gate="G$1" pin="2"/>
 <wire x1="101.6" y1="83.82" x2="101.6" y2="50.8" width="0.1524" layer="91"/>
 <junction x="114.3" y="83.82"/>
-<pinref part="MASTERFIRE" gate="G$1" pin="1"/>
+<pinref part="PRIMARYFIRE" gate="G$1" pin="1"/>
 <wire x1="149.86" y1="86.36" x2="137.16" y2="86.36" width="0.1524" layer="91"/>
 <pinref part="IC1" gate="B" pin="I"/>
 <wire x1="137.16" y1="81.28" x2="137.16" y2="86.36" width="0.1524" layer="91"/>
@@ -9979,11 +9979,11 @@ Source: AVX .. aphvc.pdf</description>
 <wire x1="142.24" y1="91.44" x2="114.3" y2="91.44" width="0.1524" layer="91"/>
 <pinref part="IC1" gate="P" pin="VSS"/>
 <junction x="114.3" y="91.44"/>
-<pinref part="SLAVETRIGGER" gate="G$1" pin="2"/>
+<pinref part="2NDARYTRIGGER" gate="G$1" pin="2"/>
 <wire x1="152.4" y1="66.04" x2="152.4" y2="55.88" width="0.1524" layer="91"/>
-<pinref part="SLAVEFIRE" gate="G$1" pin="2"/>
+<pinref part="2NDARYFIRE" gate="G$1" pin="2"/>
 <wire x1="152.4" y1="78.74" x2="152.4" y2="73.66" width="0.1524" layer="91"/>
-<pinref part="MASTERFIRE" gate="G$1" pin="2"/>
+<pinref part="PRIMARYFIRE" gate="G$1" pin="2"/>
 <wire x1="149.86" y1="88.9" x2="142.24" y2="88.9" width="0.1524" layer="91"/>
 <wire x1="142.24" y1="88.9" x2="142.24" y2="91.44" width="0.1524" layer="91"/>
 <junction x="142.24" y="91.44"/>
@@ -10035,7 +10035,7 @@ Source: AVX .. aphvc.pdf</description>
 <wire x1="38.1" y1="43.18" x2="38.1" y2="15.24" width="0.1524" layer="91"/>
 <wire x1="38.1" y1="15.24" x2="35.56" y2="12.7" width="0.1524" layer="91"/>
 <wire x1="48.26" y1="45.72" x2="48.26" y2="43.18" width="0.1524" layer="91"/>
-<pinref part="MASTERTRIGGER" gate="G$1" pin="2"/>
+<pinref part="PRIMARYTRIGGER" gate="G$1" pin="2"/>
 <wire x1="78.74" y1="25.4" x2="78.74" y2="12.7" width="0.1524" layer="91"/>
 <junction x="78.74" y="25.4"/>
 <junction x="78.74" y="12.7"/>
@@ -10162,7 +10162,7 @@ Source: AVX .. aphvc.pdf</description>
 </net>
 <net name="N$11" class="0">
 <segment>
-<pinref part="SLAVETRIGGER" gate="G$1" pin="1"/>
+<pinref part="2NDARYTRIGGER" gate="G$1" pin="1"/>
 <wire x1="149.86" y1="55.88" x2="142.24" y2="55.88" width="0.1524" layer="91"/>
 <pinref part="R3" gate="G$1" pin="1"/>
 <wire x1="137.16" y1="48.26" x2="142.24" y2="48.26" width="0.1524" layer="91"/>
@@ -10204,7 +10204,7 @@ Source: AVX .. aphvc.pdf</description>
 <segment>
 <wire x1="76.2" y1="68.58" x2="78.74" y2="66.04" width="0.1524" layer="91"/>
 <wire x1="78.74" y1="66.04" x2="78.74" y2="27.94" width="0.1524" layer="91"/>
-<pinref part="MASTERTRIGGER" gate="G$1" pin="1"/>
+<pinref part="PRIMARYTRIGGER" gate="G$1" pin="1"/>
 <pinref part="J1" gate="G$1" pin="D4"/>
 <wire x1="76.2" y1="68.58" x2="73.66" y2="68.58" width="0.1524" layer="91"/>
 <junction x="78.74" y="27.94"/>
@@ -10217,7 +10217,7 @@ Source: AVX .. aphvc.pdf</description>
 <wire x1="134.62" y1="45.72" x2="142.24" y2="45.72" width="0.1524" layer="91"/>
 <wire x1="134.62" y1="48.26" x2="134.62" y2="45.72" width="0.1524" layer="91"/>
 <wire x1="129.54" y1="48.26" x2="134.62" y2="48.26" width="0.1524" layer="91"/>
-<pinref part="SLAVEFIRE" gate="G$1" pin="1"/>
+<pinref part="2NDARYFIRE" gate="G$1" pin="1"/>
 <wire x1="149.86" y1="73.66" x2="149.86" y2="83.82" width="0.1524" layer="91"/>
 <wire x1="149.86" y1="83.82" x2="129.54" y2="83.82" width="0.1524" layer="91"/>
 <pinref part="U1" gate="G$1" pin="A"/>

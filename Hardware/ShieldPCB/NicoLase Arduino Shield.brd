@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="9.5.1">
+<eagle version="9.0.1">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -161,13 +161,13 @@
 <wire x1="3.81" y1="69.84" x2="3.81" y2="7.62" width="0" layer="20"/>
 <text x="57.5564" y="8.382" size="1.27" layer="21" font="vector" ratio="12" align="bottom-right">NicoLase 1500
 Trigger Processing Shield</text>
-<text x="20.7264" y="13.9192" size="1.27" layer="21" font="vector" ratio="15" rot="R90" align="top-center">MASTER
+<text x="20.7264" y="13.9192" size="1.27" layer="21" font="vector" ratio="15" rot="R90" align="top-center">PRIMARY
 TRIGGER</text>
-<text x="20.7264" y="29.1592" size="1.27" layer="21" font="vector" ratio="15" rot="R90" align="top-center">MASTER
+<text x="20.7264" y="29.1592" size="1.27" layer="21" font="vector" ratio="15" rot="R90" align="top-center">PRIMARY
 FIRE</text>
-<text x="20.7264" y="44.45" size="1.27" layer="21" font="vector" ratio="15" rot="R90" align="top-center">SLAVE
+<text x="20.7264" y="44.45" size="1.27" layer="21" font="vector" ratio="15" rot="R90" align="top-center">SECONDARY
 FIRE</text>
-<text x="20.7264" y="59.69" size="1.27" layer="21" font="vector" ratio="15" rot="R90" align="top-center">SLAVE
+<text x="20.7264" y="59.69" size="1.27" layer="21" font="vector" ratio="15" rot="R90" align="top-center">SECONDARY
 TRIGGER</text>
 <text x="57.5564" y="67.8688" size="1.27" layer="21" font="vector" ratio="12" align="bottom-right">v 2.2</text>
 </plain>
@@ -2774,9 +2774,6 @@ design rules under a new name.</description>
 <param name="checkRestrict" value="1"/>
 <param name="checkStop" value="0"/>
 <param name="checkValues" value="0"/>
-<param name="checkNames" value="1"/>
-<param name="checkWireStubs" value="1"/>
-<param name="checkPolygonWidth" value="0"/>
 <param name="useDiameter" value="13"/>
 <param name="maxErrors" value="50"/>
 </designrules>
@@ -2929,7 +2926,7 @@ design rules under a new name.</description>
 <attribute name="NAME" x="25.0698" y="33.9344" size="1.016" layer="25" font="vector" ratio="12" rot="R90" align="bottom-center"/>
 <attribute name="VALUE" x="34.544" y="33.655" size="1.27" layer="27" ratio="10" rot="R180"/>
 </element>
-<element name="MASTERFIRE" library="con-coax" package="B35N61" value="BN35N61" x="15.24" y="29.21" smashed="yes" rot="R270">
+<element name="PRIMARYFIRE" library="con-coax" package="B35N61" value="BN35N61" x="15.24" y="29.21" smashed="yes" rot="R270">
 <attribute name="MF" value="" x="15.24" y="29.21" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="MPN" value="" x="15.24" y="29.21" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="OC_FARNELL" value="unknown" x="15.24" y="29.21" size="1.778" layer="27" rot="R270" display="off"/>
@@ -2951,14 +2948,14 @@ design rules under a new name.</description>
 <element name="S1" library="SparkFun-Retired" package="TACTILE-PTH" value="" x="35.56" y="43.18" smashed="yes" rot="R90">
 <attribute name="NAME" x="30.4292" y="43.4848" size="1.27" layer="25" font="vector" ratio="15" rot="R270" align="bottom-center"/>
 </element>
-<element name="SLAVEFIRE" library="con-coax" package="B35N61" value="BN35N61" x="15.24" y="44.45" smashed="yes" rot="R270">
+<element name="2NDARYFIRE" library="con-coax" package="B35N61" value="BN35N61" x="15.24" y="44.45" smashed="yes" rot="R270">
 <attribute name="MF" value="" x="15.24" y="44.45" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="MPN" value="" x="15.24" y="44.45" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="OC_FARNELL" value="unknown" x="15.24" y="44.45" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="OC_NEWARK" value="unknown" x="15.24" y="44.45" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="VALUE" x="8.89" y="48.26" size="1.27" layer="27" rot="R270"/>
 </element>
-<element name="SLAVETRIGGER" library="con-coax" package="B35N61" value="BN35N61" x="15.24" y="59.69" smashed="yes" rot="R270">
+<element name="2NDARYTRIGGER" library="con-coax" package="B35N61" value="BN35N61" x="15.24" y="59.69" smashed="yes" rot="R270">
 <attribute name="MF" value="" x="15.24" y="59.69" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="MPN" value="" x="15.24" y="59.69" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="OC_FARNELL" value="unknown" x="15.24" y="59.69" size="1.778" layer="27" rot="R270" display="off"/>
@@ -2970,7 +2967,7 @@ design rules under a new name.</description>
 <attribute name="PROD_ID" value="IC-10842" x="26.67" y="25.4" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="VALUE" x="27.432" y="27.051" size="0.4064" layer="27" rot="R180"/>
 </element>
-<element name="MASTERTRIGGER" library="con-coax" package="B35N61" value="BN35N61" x="15.24" y="13.97" smashed="yes" rot="R270">
+<element name="PRIMARYTRIGGER" library="con-coax" package="B35N61" value="BN35N61" x="15.24" y="13.97" smashed="yes" rot="R270">
 <attribute name="MF" value="" x="15.24" y="13.97" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="MPN" value="" x="15.24" y="13.97" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="OC_FARNELL" value="unknown" x="15.24" y="13.97" size="1.778" layer="27" rot="R270" display="off"/>
@@ -3005,7 +3002,7 @@ design rules under a new name.</description>
 <wire x1="27.62" y1="25.4" x2="30.48" y2="25.4" width="0.4064" layer="1"/>
 <contactref element="R5" pad="2"/>
 <contactref element="IC1" pad="5"/>
-<contactref element="MASTERFIRE" pad="1"/>
+<contactref element="PRIMARYFIRE" pad="1"/>
 <wire x1="30.48" y1="25.4" x2="32.4104" y2="27.3304" width="0.4064" layer="1"/>
 <wire x1="27.62" y1="25.4" x2="22.7584" y2="25.4" width="0.4064" layer="1"/>
 <wire x1="22.7584" y1="25.4" x2="20.3484" y2="22.99" width="0.4064" layer="1"/>
@@ -3023,18 +3020,18 @@ design rules under a new name.</description>
 </signal>
 <signal name="GND">
 <contactref element="IC1" pad="8"/>
-<contactref element="SLAVETRIGGER" pad="2"/>
-<contactref element="SLAVETRIGGER" pad="3"/>
-<contactref element="SLAVETRIGGER" pad="4"/>
-<contactref element="SLAVETRIGGER" pad="5"/>
-<contactref element="SLAVEFIRE" pad="2"/>
-<contactref element="SLAVEFIRE" pad="3"/>
-<contactref element="SLAVEFIRE" pad="4"/>
-<contactref element="SLAVEFIRE" pad="5"/>
-<contactref element="MASTERFIRE" pad="2"/>
-<contactref element="MASTERFIRE" pad="3"/>
-<contactref element="MASTERFIRE" pad="4"/>
-<contactref element="MASTERFIRE" pad="5"/>
+<contactref element="2NDARYTRIGGER" pad="2"/>
+<contactref element="2NDARYTRIGGER" pad="3"/>
+<contactref element="2NDARYTRIGGER" pad="4"/>
+<contactref element="2NDARYTRIGGER" pad="5"/>
+<contactref element="2NDARYFIRE" pad="2"/>
+<contactref element="2NDARYFIRE" pad="3"/>
+<contactref element="2NDARYFIRE" pad="4"/>
+<contactref element="2NDARYFIRE" pad="5"/>
+<contactref element="PRIMARYFIRE" pad="2"/>
+<contactref element="PRIMARYFIRE" pad="3"/>
+<contactref element="PRIMARYFIRE" pad="4"/>
+<contactref element="PRIMARYFIRE" pad="5"/>
 <contactref element="U1" pad="3"/>
 <contactref element="R1" pad="1"/>
 <contactref element="R2" pad="1"/>
@@ -3062,10 +3059,10 @@ design rules under a new name.</description>
 <contactref element="C2" pad="3"/>
 <contactref element="C2" pad="5"/>
 <contactref element="C2" pad="2"/>
-<contactref element="MASTERTRIGGER" pad="4"/>
-<contactref element="MASTERTRIGGER" pad="3"/>
-<contactref element="MASTERTRIGGER" pad="5"/>
-<contactref element="MASTERTRIGGER" pad="2"/>
+<contactref element="PRIMARYTRIGGER" pad="4"/>
+<contactref element="PRIMARYTRIGGER" pad="3"/>
+<contactref element="PRIMARYTRIGGER" pad="5"/>
+<contactref element="PRIMARYTRIGGER" pad="2"/>
 <contactref element="J1" pad="GND@2"/>
 <contactref element="J1" pad="GND@1"/>
 <wire x1="26.035" y1="40.135" x2="26.54" y2="40.64" width="0.4064" layer="1"/>
@@ -3205,7 +3202,7 @@ design rules under a new name.</description>
 <wire x1="26.2128" y1="33.8328" x2="32.4104" y2="33.8328" width="0.4064" layer="16"/>
 </signal>
 <signal name="N$11">
-<contactref element="SLAVETRIGGER" pad="1"/>
+<contactref element="2NDARYTRIGGER" pad="1"/>
 <contactref element="R3" pad="1"/>
 <wire x1="26.54" y1="58.6008" x2="26.54" y2="53.34" width="0.4064" layer="1"/>
 <wire x1="15.24" y1="59.69" x2="25.4508" y2="59.69" width="0.4064" layer="1"/>
@@ -3259,7 +3256,7 @@ design rules under a new name.</description>
 <signal name="N$18">
 </signal>
 <signal name="N$19">
-<contactref element="MASTERTRIGGER" pad="1"/>
+<contactref element="PRIMARYTRIGGER" pad="1"/>
 <contactref element="J1" pad="D4"/>
 <wire x1="6.35" y1="46.99" x2="8.89" y2="46.99" width="0.4064" layer="1"/>
 <wire x1="8.89" y1="46.99" x2="8.89" y2="25.0444" width="0.4064" layer="1"/>
@@ -3277,7 +3274,7 @@ design rules under a new name.</description>
 <signal name="N$26">
 <contactref element="R4" pad="2"/>
 <contactref element="U1" pad="1"/>
-<contactref element="SLAVEFIRE" pad="1"/>
+<contactref element="2NDARYFIRE" pad="1"/>
 <wire x1="15.24" y1="44.45" x2="19.4564" y2="44.45" width="0.4064" layer="1"/>
 <wire x1="19.4564" y1="44.45" x2="20.7772" y2="43.1292" width="0.4064" layer="1"/>
 <wire x1="20.7772" y1="43.1292" x2="20.7772" y2="36.1472" width="0.4064" layer="1"/>
@@ -3294,13 +3291,6 @@ design rules under a new name.</description>
 <wire x1="30.48" y1="27.94" x2="21.6408" y2="27.94" width="0.4064" layer="16"/>
 </signal>
 </signals>
-<mfgpreviewcolors>
-<mfgpreviewcolor name="soldermaskcolor" color="0xC8008000"/>
-<mfgpreviewcolor name="silkscreencolor" color="0xFFFEFEFE"/>
-<mfgpreviewcolor name="backgroundcolor" color="0xFF282828"/>
-<mfgpreviewcolor name="coppercolor" color="0xFFFFBF00"/>
-<mfgpreviewcolor name="substratecolor" color="0xFF786E46"/>
-</mfgpreviewcolors>
 </board>
 </drawing>
 <compatibility>

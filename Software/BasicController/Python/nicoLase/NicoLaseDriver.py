@@ -18,6 +18,27 @@ returnMessages = {
     'DeviceID' : 'NicoLaseSequencer'
     }
 
+def nicoLaseStart(comPort, baud, timeOut):
+    
+    """
+    Helper function to start a serial object like NicoLase or octoDAC
+    
+    Inputs : comPort - string; com port to use for this object
+             baud - int; baud rate for serial port.  NicoLase is set to 115200
+             timeOut - int; timeout time for port in seconds.  Default is 1    
+             
+    Returns : n1 - initialized NicoLaseDriver object on provided serial port parameters.
+    """
+    
+    import serial 
+    
+    ser1 = serial.Serial(comPort, baud, timeout = timeOut)
+    time.sleep(3)
+    ser1.flushInput()
+    ser1.reset_input_buffer()
+    
+    return ser1
+
 class NicoLaseDriver():
     """
     Class for communicating with NicoLase Arduino Shield
