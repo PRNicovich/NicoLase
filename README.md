@@ -120,7 +120,7 @@ Both configurations use the same hardware and share many of the same serial comm
 
 Triggering (via either the PCB PIMARY FIRE or SECONDARY FIRE connection) triggers an interrupt on the Arduino. A rising edge causes the laser outputs (CH1 through CH6) to go high.  A falling edge on the trigger pulse drives the laser outputs low and iterates the programmed sequence to the next one.  If the end of the sequence list is reached the Arduino goes back to the start.  Any given line of the sequence can be repeated any number of times (up to 2147483647 times per line).  
 
-Alternate functions are available for what is called a pre- or post-acquisition command.  These are single laser patterns that can be triggered by a serial command independent of a trigger input.  Each has a time associated for how long the outputs will be held high.  The pre-acquisition sequence has an additional delay after which an optional pulse will be send to the PRIMARY TRIGGER pin.  This means you can, for example, have an acquisition sequence of a 488 nm laser and 561 nm laser firing on alternating camera frames (the 'acquisition sequence').  Before that sequence is reached, however, a pre-acquisition sequence of a 405 nm laser is fired with no camera acquisition for 1000 ms, followed by a 500 ms delay, and then the actual acquisition begun by the Arduino sending a pulse to the master camera.  A more detailed description of the 
+Alternate functions are available for what is called a pre- or post-acquisition command.  These are single laser patterns that can be triggered by a serial command independent of a trigger input.  Each has a time associated for how long the outputs will be held high.  The pre-acquisition sequence has an additional delay after which an optional pulse will be send to the PRIMARY TRIGGER pin.  This means you can, for example, have an acquisition sequence of a 488 nm laser and 561 nm laser firing on alternating camera frames (the 'acquisition sequence').  Before that sequence is reached, however, a pre-acquisition sequence of a 405 nm laser is fired with no camera acquisition for 1000 ms, followed by a 500 ms delay, and then the actual acquisition begun by the Arduino sending a pulse to the primary camera.  A more detailed description of the 
 triggering and associated controller functions is given in the Triggering section.  
 
 Additional commands enable configuration of the controller as a UserDefinedStateDevice and UserDefinedShutter device in Micro-Manager.  In this mode basic fluorescence microscopy functions (select a laser set and toggle on/off) directly through Micro-manager GUI.  For those wishing to use the NicoLase in a straightforward or multi-user environment this may be useful. 
@@ -157,7 +157,7 @@ A diagram of the triggering sequence in the default external clock mode is given
 
 ![Trigger diagram](https://github.com/PRNicovich/NicoLase/blob/master/Triggering/TriggeringDiagram.jpg)
 
-Here input signals are blue (Master In and Slave In), outputs to cameras in red (Master Out and Slave Out), and outputs to lasers in wavelength-approximate colors (Ch6 - Ch1).  Trigger event stages are separated by dashed black lines with acquisition frames in gray blocks with gray dotted borders.
+Here input signals are blue (Primary In and Secondary In), outputs to cameras in red (Primary Out and Secondary Out), and outputs to lasers in wavelength-approximate colors (Ch6 - Ch1).  Trigger event stages are separated by dashed black lines with acquisition frames in gray blocks with gray dotted borders.
 
 Because the SECONDARY FIRE and PRIMARY FIRE inputs first pass through an OR gate, either being high results in the input to the Arduino being high.  In practice the separation between these two pulses is on the order of single microseconds, so these are treated as simultaneous.  Also, this means that even in a dual-camera system, running either camera alone is sufficient to trigger the CHX outputs.  Single cameras can work on either, though using PRIMARY TRIGGER input only is recommended.
 
@@ -165,9 +165,9 @@ The progression of trigger signals for this experiment of 8 imaging frames is as
 -  Serial command to Arduino starts Pre-acquisition sequence with Ch1 and Ch6 high (ie 405 nm laser and blue transmitted LED)
 -  After defined illumination time, Pre-acquisition ends and Pre-acquisition delay begins
 -  After defined pre-acquisition delay time, a pulse is sent to the PRIMARY TRIGGER output
--  The Master camera begins acquiring frames (charcteristics defined through camera software).  Each is associated with an input pulse at the PRIMARY FIRE pin
+-  The Primary camera begins acquiring frames (charcteristics defined through camera software).  Each is associated with an input pulse at the PRIMARY FIRE pin
 -  Each incoming PRIMARY FIRE pulse results in an output SECONDARY TRIGGER pulse and output pulses to the user-specified CHX output pins.  Here I show alternating sequences of [Ch5 + Ch4] and [Ch3 + Ch2] to illustrate the programmable sequencing of these pins. 
-- Each SECONDARY TRIGGER pulse triggers the slave camera, which in turn results in an incoming SECONDARY FIRE pulse (ignored in 2-camera acquisitions)
+- Each SECONDARY TRIGGER pulse triggers the secondary camera, which in turn results in an incoming SECONDARY FIRE pulse (ignored in 2-camera acquisitions)
 - Falling edge of PRIMARY FIRE pulse drives CHX outputs low and Arduino iterates to next line of sequence
 - After acquisition is complete, serial command to Arduino starts Post-acquisition sequence (here Ch6, blue transmitted LED high) for user-defined time
 
