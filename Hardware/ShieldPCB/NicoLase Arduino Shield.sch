@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="9.0.1">
+<eagle version="9.5.1">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -9938,6 +9938,22 @@ Source: AVX .. aphvc.pdf</description>
 <attribute name="NAME" x="107.315" y="103.124" size="1.778" layer="95" rot="R270"/>
 <attribute name="VALUE" x="102.489" y="103.124" size="1.778" layer="96" rot="R270"/>
 </instance>
+<instance part="IC1" gate="C" x="185.42" y="55.88" smashed="yes">
+<attribute name="NAME" x="187.96" y="59.055" size="1.778" layer="95"/>
+<attribute name="VALUE" x="187.96" y="50.8" size="1.778" layer="96"/>
+</instance>
+<instance part="IC1" gate="D" x="185.42" y="43.18" smashed="yes">
+<attribute name="NAME" x="187.96" y="46.355" size="1.778" layer="95"/>
+<attribute name="VALUE" x="187.96" y="38.1" size="1.778" layer="96"/>
+</instance>
+<instance part="IC1" gate="E" x="185.42" y="30.48" smashed="yes">
+<attribute name="NAME" x="187.96" y="33.655" size="1.778" layer="95"/>
+<attribute name="VALUE" x="187.96" y="25.4" size="1.778" layer="96"/>
+</instance>
+<instance part="IC1" gate="F" x="185.42" y="17.78" smashed="yes">
+<attribute name="NAME" x="187.96" y="20.955" size="1.778" layer="95"/>
+<attribute name="VALUE" x="187.96" y="12.7" size="1.778" layer="96"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -10056,6 +10072,23 @@ Source: AVX .. aphvc.pdf</description>
 <pinref part="C8" gate="G$1" pin="1"/>
 <wire x1="109.22" y1="104.14" x2="114.3" y2="104.14" width="0.1524" layer="91"/>
 <wire x1="114.3" y1="104.14" x2="114.3" y2="91.44" width="0.1524" layer="91"/>
+<wire x1="160.02" y1="12.7" x2="172.72" y2="12.7" width="0.1524" layer="91"/>
+<junction x="160.02" y="12.7"/>
+<pinref part="IC1" gate="C" pin="I"/>
+<wire x1="172.72" y1="12.7" x2="172.72" y2="17.78" width="0.1524" layer="91"/>
+<wire x1="172.72" y1="17.78" x2="172.72" y2="30.48" width="0.1524" layer="91"/>
+<wire x1="172.72" y1="30.48" x2="172.72" y2="43.18" width="0.1524" layer="91"/>
+<wire x1="172.72" y1="43.18" x2="172.72" y2="55.88" width="0.1524" layer="91"/>
+<wire x1="172.72" y1="55.88" x2="175.26" y2="55.88" width="0.1524" layer="91"/>
+<pinref part="IC1" gate="D" pin="I"/>
+<wire x1="175.26" y1="43.18" x2="172.72" y2="43.18" width="0.1524" layer="91"/>
+<junction x="172.72" y="43.18"/>
+<pinref part="IC1" gate="E" pin="I"/>
+<wire x1="175.26" y1="30.48" x2="172.72" y2="30.48" width="0.1524" layer="91"/>
+<junction x="172.72" y="30.48"/>
+<pinref part="IC1" gate="F" pin="I"/>
+<wire x1="175.26" y1="17.78" x2="172.72" y2="17.78" width="0.1524" layer="91"/>
+<junction x="172.72" y="17.78"/>
 </segment>
 </net>
 <net name="N$3" class="0">
