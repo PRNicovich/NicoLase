@@ -1,28 +1,19 @@
-Partlist for NicoLase Arduino Shield
+Part            Qtty    MPN/Value            Description/Notes
+R1-R16          16      ERA-8AEB103V         10k 0.1% R1206
 
-Assembly variant: 
-
-Part          Value             Package       
-
-C1            BN35N61           B35N61        
-C2            BN35N61           B35N61        
-C3            BN35N61           B35N61        
-C4            BN35N61           B35N61        
-C5            BN35N61           B35N61        
-C6            BN35N61           B35N61        
-IC1           74HC4050D         SO16          
-J1            NicoLaseShieldPCB CustomPCB
-MASTERFIRE    BN35N61           B35N61       
-MASTERTRIGGER BN35N61           B35N61        
-R1            10k               1206          
-R2            10k               1206          
-R3            220               1206
-R4	      10k               1206     
-R5            10k               1206              
-S1            NormOpenPshBtn    TACTILE-PTH   
-SLAVEFIRE     BN35N61           B35N61        
-SLAVETRIGGER  BN35N61           B35N61       
-U1            7432SE            SOT353       
+C1-C6           6       5-1634503-1          BNC JACK STR 50 OHM
+MASTERFIRE      1       5-1634503-1          BNC JACK STR 50 OHM
+MASTERTRIGGER   1       5-1634503-1          BNC JACK STR 50 OHM
+SLAVEFIRE       1       5-1634503-1          BNC JACK STR 50 OHM
+SLAVETRIGGER    1       5-1634503-1          BNC JACK STR 50 OHM
+IC1             1       74HC4050D            IC BUFFER NON-INVERT 
+R1,R2,R4,R5     4       RC1206JR-0710KL      10k 5% 1/4W R1206
+R3              1       RMCF1206FT220R       220 1% 1/4W R1206
+S               1       PTS645SH50-2 LFS     SWITCH TACTILE SPST-NO
+U1              1       74HC1G32GW,125       GATE OR 1CH
+ANALOG          1                            CONN HEADER 6POS 0.1 TIN
+DIGI0,POWER     2                            CONN HEADER 8POS 0.1 TIN
+DIGI1           1                            CONN HEADER 10POS 0.1 TIN
 
 Add sufficient male 0.1" headers to populate board (28 total). 
 
