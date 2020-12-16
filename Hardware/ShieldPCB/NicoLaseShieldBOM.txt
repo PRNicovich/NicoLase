@@ -1,6 +1,4 @@
 Part            Qtty    MPN/Value            Description/Notes
-R1-R16          16      ERA-8AEB103V         10k 0.1% R1206
-
 C1-C6           6       5-1634503-1          BNC JACK STR 50 OHM
 MASTERFIRE      1       5-1634503-1          BNC JACK STR 50 OHM
 MASTERTRIGGER   1       5-1634503-1          BNC JACK STR 50 OHM
