@@ -103,6 +103,8 @@ void setup() {
   digitalWrite(outPin, LOW);
   DDRC = B11111111;
 
+   
+
 }
 
 // ------------------------------------------------------ //
@@ -730,7 +732,8 @@ void ToggleLED() {
           cycleNum = 0;
         }
       }
-
+  
+   proceedTrigger = true;
    }
      
      else {
@@ -739,7 +742,7 @@ void ToggleLED() {
 
      LEDToggle = !LEDToggle;
      
-     proceedTrigger = true;
+     
 }
 
 /*
