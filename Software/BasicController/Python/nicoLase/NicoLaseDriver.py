@@ -8,14 +8,13 @@ NicoLase Python class
 
 Supports functionality of NicoLase Basic Controller for laser selection and communication.
 
-From Arduino sketch (.\NicoLase\Software\BasicController\ArduinoSketch\SerialSequenceUploader\SerialSequenceUploader.ino):
-
 """
 import time
 
 returnMessages = {
     'CMD_NOT_DEFINED': 0x15,
-    'DeviceID' : 'NicoLaseSequencer'
+    'DeviceID' : 'NicoLaseSequencer',
+    'ENCODING' : 'utf8'
     }
 
 def nicoLaseStart(comPort, baud, timeOut):
@@ -94,13 +93,14 @@ class NicoLaseDriver():
         """
         self.serial.reset_input_buffer()
         self.serial.reset_output_buffer()
-        self.serial.write(sendString + '\n')
-        ret = self.serial.readline().strip()
+        sendString = sendString + '\n'
+        self.serial.write(sendString.encode(returnMessages['ENCODING']))
+        ret = self.serial.readline().decode(returnMessages['ENCODING']).strip()
         
         if self.verbose:
             print(ret)
             
-        return
+        return ret
 
     # A
     def appendToSeq(self, seq):
@@ -144,8 +144,8 @@ class NicoLaseDriver():
         """
         self.serial.reset_input_buffer()
         self.serial.reset_output_buffer()
-        self.serial.write('E\n')
-        rd = self.serial.read(1000)
+        self.serial.write('E\n'.encode(returnMessages['ENCODING']))
+        rd = self.serial.read(1000).decode(returnMessages['ENCODING'])
         print(rd)
         
     # F
@@ -300,8 +300,7 @@ class NicoLaseDriver():
     # Y 
     def getIdentification(self):
         """ identification query """
-        self.serial.write('Y\n')
-        idn = self.serial.readline().strip()
+        idn = self.writeAndRead('Y')
         return idn
         
     # ?  
@@ -309,8 +308,15 @@ class NicoLaseDriver():
         """ 
         Query state of shutter
         """
-        self.serial.write('? S\n')
-        idn = self.serial.readline().strip()
+        idn = self.writeAndRead('? S')
+        return idn 
+        
+    # ?  
+    def queryProceedTrigger(self):
+        """ 
+        Query state of proceedTrigger
+        """
+        idn = self.writeAndRead('? P')
         return idn 
 
 if __name__ == '__main__':

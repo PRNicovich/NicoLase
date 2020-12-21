@@ -27,7 +27,7 @@
  *  X - All off and reset to trigger-enabled setting.
  *  Y - Return device ID ('NicoLaseSequencer')
  *  ? X - Query state of device X.  Supported devices : S = shutter open (0 = closed, 1 = open)
- *  
+ *                                                      P = proceedTrigger set by primaryFire input since last query (1 = yes; 0 = no)
  *  
  *  Button with pull-down resistor into pin 3
  *  LEDs with pins A0-A5 (Red-Blue, C6-C1) as sources
@@ -58,6 +58,10 @@ unsigned long postIllumTime = 0;
 volatile int digitCount = 1;
 
 boolean shutterState = false;
+
+boolean proceedTrigger = false; // Set to true with primaryFire interrupt
+                                // Set to false by "? P" query
+                                // Query to see if proceedTrigger has come in since last query
 
 // Incoming trigger variables
 const int triggerPin = 2;
@@ -664,7 +668,19 @@ void loop() {
             }
 
             break;
-            
+
+           case ('P'):
+           // Return current proceedTrigger state
+           // Reset trigger to false
+
+           if (proceedTrigger) {
+            Serial.println("1");
+            proceedTrigger = false;
+           }
+           else {
+            Serial.println("0");
+           }
+            break;
         }
 
         break;
@@ -722,6 +738,8 @@ void ToggleLED() {
      }
 
      LEDToggle = !LEDToggle;
+     
+     proceedTrigger = true;
 }
 
 /*
